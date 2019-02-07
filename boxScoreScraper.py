@@ -6,6 +6,39 @@ from nba_api.stats.static import players
 from nba_api.stats.endpoints import leaguegamefinder
 
 
+teamToIndex = {
+    'ATL': 0,
+    'BOS': 1,
+    'BKN': 2,
+    'CHA': 3,
+    'CHI': 4,
+    'CLE': 5,
+    'DAL': 6,
+    'DEN': 7,
+    'DET': 8,
+    'GSW': 9,
+    'HOU': 10,
+    'IND': 11,
+    'LAC': 12,
+    'LAL': 13,
+    'MEM': 14,
+    'MIA': 15,
+    'MIL': 16,
+    'MIN': 17,
+    'NOP': 18,
+    'NYK': 19,
+    'OKC': 20,
+    'ORL': 21,
+    'PHI': 22,
+    'PHX': 23,
+    'POR': 24,
+    'SAC': 25,
+    'SAS': 26,
+    'TOR': 27,
+    'UTA': 28,
+    'WAS': 29,
+}
+
 # loads box scores for a team into data frame
 def getTeamBoxScoreForYear(teamName, season):
     teamNameId = getTeamIdFromName(teamName)
@@ -19,12 +52,17 @@ def getTeamBoxScoreForYear(teamName, season):
 
 
 
-# gets all the box scores for a team between the given years
+# gets all the box scores for a team between the given years and writes the data frame to a csv file
 def getTeamBoxScoresBetweenYears(teamName, start_year, end_year):
     frame = getTeamBoxScoreForYear(teamName, formatYearToSeason(start_year))
     for x in range(end_year-start_year):
         season = formatYearToSeason(start_year+1+x)
-        frame = frame.append(getTeamBoxScoreForYear('BOS', season), ignore_index=True)
+        frame = frame.append(getTeamBoxScoreForYear(teamName, season), ignore_index=True)
+
+
+    filename = 'datasets/{}_{}_to_{}.csv'.format(teamName, start_year, end_year)
+    print(filename)
+    frame.to_csv(filename, index=None, header=True)
 
     return frame
 
@@ -44,13 +82,13 @@ def getTeamIdFromName(teamName):
 
 
 
-def writeFrameToCsv():
-    
+# Gets all box scores for every NBA team between the provided years
+def getAllTeamBoxScoresBetweenYears(start_year, end_year):
+    for key in teamToIndex.keys():
+        getTeamBoxScoresBetweenYears(key, start_year, end_year)
 
 
 
 if __name__ == "__main__":
-    frame = getTeamBoxScoresBetweenYears('BOS', 2015, 2018)
-    # small_frame = frame[['GAME_DATE', 'MATCHUP', 'WL']]
-    # print(small_frame)
-    # print(frame['GAME_DATE'].values)
+    frame = getTeamBoxScoresBetweenYears('DEN', 2015, 2018)
+    # getAllTeamBoxScoresBetweenYears(2015, 2018)
