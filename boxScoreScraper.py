@@ -4,6 +4,7 @@ from nba_api.stats.endpoints import teamgamelog
 from nba_api.stats.static import teams
 from nba_api.stats.static import players
 from nba_api.stats.endpoints import leaguegamefinder
+import time
 
 
 teamToIndex = {
@@ -84,11 +85,13 @@ def getTeamIdFromName(teamName):
 
 # Gets all box scores for every NBA team between the provided years
 def getAllTeamBoxScoresBetweenYears(start_year, end_year):
+    # iterate over all the team name abbreviations
     for key in teamToIndex.keys():
-        getTeamBoxScoresBetweenYears(key, start_year, end_year)
+        getTeamBoxScoresBetweenYears(key, start_year, end_year) # call the helper method with the current team
+        time.sleep(10) # without this line, the API sends a connection timeout error after the first couple requests
 
 
 
 if __name__ == "__main__":
-    frame = getTeamBoxScoresBetweenYears('DEN', 2015, 2018)
-    # getAllTeamBoxScoresBetweenYears(2015, 2018)
+    # frame = getTeamBoxScoresBetweenYears('MEM', 2015, 2018)
+    getAllTeamBoxScoresBetweenYears(2015, 2018)
