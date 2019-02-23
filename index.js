@@ -9,7 +9,43 @@ app.listen(PORT, function () {
   console.log('App listening on port 3000!');
 });
 
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+// const collection = client.db("NPS").collection("Teams");
+// // perform actions on the collection object
+// collection.insertOne({'ID': 40, 'Location': 'aa'})
+// client.close();
+// });
+
+
+
+
+
 app.get('/', function(req, res){
+
+
+
+  // const MongoClient = require('mongodb').MongoClient;
+  // const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
+  // const client = new MongoClient(uri, { useNewUrlParser: true });
+  // client.connect(err => {
+  // const collection = client.db("NPS").collection("Teams");
+  // // perform actions on the collection object
+  // collection.insertMany([
+  //     {'ID': 60},
+  //     {'ID': 61},
+  //     {'ID': 62},
+  //     {'ID': 63},
+  //     {'ID': 64}
+  //   ])
+  // //console.log(a)
+  // client.close();
+  // });
+
+
   res.send("NBA Prediction System")
   const axios = require('axios')
   //console.log("HERE\n")
@@ -38,6 +74,7 @@ app.get('/', function(req, res){
   // To get odds for a sepcific sport, use the sport key from the last request
   //   or set sport to "upcoming" to see live and upcoming across all sports
   let sport_key = 'basketball_nba'
+
 
   axios.get('https://api.the-odds-api.com/v3/odds', {
       params: {
