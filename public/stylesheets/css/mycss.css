@@ -1,0 +1,390 @@
+/* Atlanta Hawks */
+.btn-ATL {
+  color: #fff;
+  background-color: #E03A3E;
+  border-color: #E03A3E;
+}
+
+.btn-ATL:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Boston Celtics */
+.btn-BOS {
+  color: #fff;
+  background-color: #007A33;
+  border-color: #007A33;
+}
+
+.btn-BOS:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Brooklyn Nets */
+.btn-BKN {
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.btn-BKN:hover {
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/* Charlotte Hornets */
+.btn-CHA {
+  color: #fff;
+  background-color: #1D1160;
+  border-color: #1D1160;
+}
+
+.btn-CHA:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+/* Chicago Bulls */
+.btn-CHI {
+  color: #fff;
+  background-color: #CE1141;
+  border-color: #CE1141;
+}
+
+.btn-CHI:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+/* Cleveland Cavaliers */
+.btn-CLE {
+  color: #fff;
+  background-color: #6F263D;
+  border-color: #6F263D;
+}
+
+.btn-CLE:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+/* Dallas Mavericks */
+.btn-DAL {
+  color: #fff;
+  background-color: #00538C;
+  border-color: #00538C;
+}
+
+.btn-DAL:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+/* Denver Nuggets */
+.btn-DEN {
+  color: #fff;
+  background-color: #0E2240;
+  border-color: #0E2240;
+}
+
+.btn-DEN:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+/* Detroit Pistons */
+.btn-DET {
+  color: #fff;
+  background-color: #C8102E;
+  border-color: #C8102E;
+}
+
+.btn-DET:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #5a6268;
+}
+
+/* Golden State Warriros */
+.btn-GSW {
+  color: #fff;
+  background-color: #006BB6;
+  border-color: #006BB6;
+}
+
+.btn-GSW:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Houston Rockets */
+.btn-HOU {
+  color: #fff;
+  background-color: #CE1141;
+  border-color: #CE1141;
+}
+
+.btn-HOU:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Indiana Pacers */
+.btn-IND {
+  color: #fff;
+  background-color: #002D62;
+  border-color: #002D62;
+}
+
+.btn-IND:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Los Angeles Clippers*/
+.btn-LAC {
+  color: #fff;
+  background-color: #C8102E;
+  border-color: #C8102E;
+}
+
+.btn-LAC:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Los Angeles Lakers*/
+.btn-LAL {
+  color: #fff;
+  background-color: #552583;
+  border-color: #552583;
+}
+
+.btn-LAL:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Memphis Grizzlies */
+.btn-MEM {
+  color: #fff;
+  background-color: #5D76A9;
+  border-color: #5D76A9;
+}
+
+.btn-MEM:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Miami Heat */
+.btn-MIA {
+  color: #fff;
+  background-color: #98002E;
+  border-color: #98002E;
+}
+
+.btn-MIA:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Milwaukee Bucks */
+.btn-MIL {
+  color: #fff;
+  background-color: #00471B;
+  border-color: #00471B;
+}
+
+.btn-MIL:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Minnesota Timeberwolves */
+.btn-MIN {
+  color: #fff;
+  background-color: #0C2340;
+  border-color: #0C2340;
+}
+
+.btn-MIN:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* New Orleans Pelicans */
+.btn-NOP {
+  color: #fff;
+  background-color: #0C2340;
+  border-color: #0C2340;
+}
+
+.btn-NOP:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+
+/* New York Knicks */
+.btn-NYK {
+  color: #fff;
+  background-color: #F58426;
+  border-color: #F58426;
+}
+
+.btn-NYK:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Oklahoma City Thunder */
+.btn-OKC {
+  color: #fff;
+  background-color: #007AC1;
+  border-color: #007AC1;
+}
+
+.btn-OKC:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Orlando Magic */
+.btn-ORL {
+  color: #fff;
+  background-color: #0077C0;
+  border-color: #0077C0;
+}
+
+.btn-ORL:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Philadelphia 76ers */
+.btn-PHI {
+  color: #fff;
+  background-color: #006BB6;
+  border-color: #006BB6;
+}
+
+.btn-PHI:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Pheonix Suns */
+.btn-PHX {
+  color: #fff;
+  background-color: #E56020;
+  border-color: #E56020;
+}
+
+.btn-PHX:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Portland Trailblazers */
+.btn-POR {
+  color: #fff;
+  background-color: #E03A3E;
+  border-color: #E03A3E;
+}
+
+.btn-POR:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Sacramento Kings */
+.btn-SAC {
+  color: #fff;
+  background-color: #5A2D81;
+  border-color: #5A2D81;
+}
+
+.btn-SAC:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* San Antonio Spurs */
+.btn-SAS {
+  color: #fff;
+  background-color: #C4CED4;
+  border-color: #C4CED4;
+}
+
+.btn-SAS:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Toronto Raptors */
+.btn-TOR {
+  color: #fff;
+  background-color: #CE1141;
+  border-color: #CE1141;
+}
+
+.btn-TOR:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Utah Jazz */
+.btn-UTA {
+  color: #fff;
+  background-color: #002B5C;
+  border-color: #002B5C;
+}
+
+.btn-UTA:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Washington Wizards */
+.btn-WAS {
+  color: #fff;
+  background-color: #002B5C;
+  border-color: #002B5C;
+}
+
+.btn-WAS:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
