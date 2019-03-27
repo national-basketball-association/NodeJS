@@ -13,24 +13,30 @@ const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/te
 // Database name
 const dbName = 'NPS';
 
+// connect options
+var options = {
+  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  useNewUrlParser: true
+};
+
 // create a MongoClient
-const client = new MongoClient(uri, { useNewUrlParser: true });
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(uri, options);
 
 //root route
 router.get("/", function(req, res) {
-  client.connect(function(err) {
-    assert.equal(null, err);
-    console.log("Connected successfully to server");
-
-    const db = client.db(dbName);
-
-    // find documents
-    Database.findDocuments(db, function(docs) {
-      res.render('template', { title: "Hey", message: "Hello"});
-      console.log(docs);
-      client.close();
+    client.connect(function(err, db) {
+      // console.log(db);
+      const dbase = client.db(dbName);
+      // console.log(dbase);
+      Database.findDocuments(dbase, function(docs) {
+        console.log(docs);
+        res.render('index', { title: "Hey", message: "Hello"});
+      });
     });
-  });
 });
+
+client.close();
 
 module.exports = router
