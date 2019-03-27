@@ -1,9 +1,89 @@
-//- index.pug
 doctype html
 html
   head
-    link(href="../../public/stylesheets/css/creative.css" rel="stylesheet")
-    link(href="../public/stylesheets/css/mycss.css" rel="stylesheet")
+    link(
+      rel="stylesheet", 
+      href="./stylesheets/css/creative.css"
+    )
+    link(
+      rel="stylesheet", 
+      href="./stylesheets/css/mycss.css"
+    )    
+    link(
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
+      crossorigin="anonymous"
+    )
     title Google
   body
-    h1 Hi my name is Riz
+    nav(class="navbar navbar-expand-lg navbar-light fixed-top py-3", id="mainNav")
+      div(class="container")
+        a(class="navbar-brand js-scroll-trigger", href="#page-top") NPS
+        button(
+          class="navbar-toggler navbar-toggler-right", 
+          type="button", 
+          data-toggle="collapse",
+          data-target="#navbarResponsive",
+          aria-controls="navbarResponsive",
+          aria-expanded="false",
+          aria-label="Toggle navigation",
+        )
+          span(
+            class='navbar-toggler-icon'
+          )
+        div(
+          class="collapse navbar-collapse",
+          id="navbarResponsive"
+        )
+          ul(class="navbar-nav ml-auto my-2 my-lg-0")
+            li(class="nav-item")
+              a(
+                href="#about",
+                class="nav-link js-scroll-trigger"
+              ) About
+            li(class="nav-item")
+              a(
+                href="#teams"
+                class="nav-link js-scroll-trigger"
+              ) Team
+    
+    script(
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
+      crossorigin="anonymous"
+    )
+    script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",
+      crossorigin="anonymous"
+    )
+    script(
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",
+      crossorigin="anonymous"
+    )
+    script(
+      src="./scripts/vendor/jquery/jquery.min.js"
+    )
+    script(
+      src="./scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"
+    )
+    script(
+      src="./scripts/vendor/jquery-easing/jquery.easing.min.js"
+    )
+    script(
+      src="./scripts/vendor/magnific-popup/jquery.magnific-popup.min.js"
+    )
+    script(
+      src="./scripts/js/creative.js"
+    )
+    script(
+      src="https://d3js.org/d3.v5.js"
+    )
+    //- script
+    //-   include ../public/scripts/vendor/jquery/jquery.min.js
+    //-   include ../public/scripts/vendor/bootstrap/js/bootstrap.bundle.min.js
+    //-   include ../public/scripts/vendor/jquery-easing/jquery.easing.min.js
+    //-   include ../public/scripts/vendor/magnific-popup/jquery.magnific-popup.min.js
+    //-   include ../public/scripts/js/creative.js
+    //- script(src="https://d3js.org/d3.v5.js")
