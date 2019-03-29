@@ -92,18 +92,46 @@ html
     section#upcoming_games.page-section
       .container.h-100
         .row.h-25.align-items-center.justify-content-center.text-center
-          .col-lg-6.align-self-end
-            i.fas.fa-balance-scale.fa-10x(style='color: orange;')
-          .col-lg-6.align-self-end
-            i.fas.fa-chart-bar.fa-10x(style='color: orange;')
-        .row.align-items-center.justify-content-center.text-center.my-4.py-4
-          .col-lg-6.align-self-end
-            button.btn.btn-outline-secondary.btn-lg(type='button', data-toggle='modal', data-target='#bettingOdds')
-              | Betting Odds
-          .col-lg-6.align-self-end
-            a(href='predictions.html')
-              button.btn.btn-outline-secondary.btn-lg(type='button')
-                | Upcomming Game Predictions
+          .col-lg-10.align-self-end
+            h1.text-uppercase.font-weight-bold
+              | Upcoming Games
+            hr.my-4
+        .row.h-75.align-items-center.justify-content-center.text-center.my-4.py-4
+          - var n = 0
+          - var count = 0
+          while n < 3
+            .col-lg-4.align-self-end
+              .card.align-items-center(style='width: 18rem;')
+                .card-body
+                  h5.card-title=data[count].predictions[0].opponentFullName + " vs " + data[count].full_name                   
+                  if data[count].predictions[0].winPrediction==true
+                    h6.card-subtitle.mb-2.text-muted="winner: " + data[count].full_name
+                  else
+                    h6.card-subtitle.mb-2.text-muted="winner: " + data[count].predictions[0].opponentFullName
+                  
+                  p.card-text
+                  table.table
+                    thead
+                      tr
+                          th(scope='col')
+                          th(scope='col')=data[count].full_name
+                          th(scope='col')=data[count].predictions[0].opponentFullName
+                    tbody
+                      tr
+                          th(scope='row') Assists
+                          td=data[count].predictions[0].predictedAssists
+                          td=data[count].predictions[0].predictedAssists - 4
+                      tr
+                          th(scope='row') Turnovers
+                          td=data[count].predictions[0].predictedTurnovers
+                          td=data[count].predictions[0].predictedTurnovers - 3
+                  p
+                  - var get_route = "/box/?id1=" + data[count]._id + "&id2=" + data[count].predictions[0].opponentId 
+                  form(action=get_route, method="get")
+                    a.card-link(href=get_route) Box Score
+            - n++
+            - count++
+            - count++                 
 
     //Teams section
     section#teams.page-section

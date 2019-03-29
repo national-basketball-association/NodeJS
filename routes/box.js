@@ -13,8 +13,7 @@ const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/te
 // Database name
 const dbName = 'NPS';
 
-// Collection names relevant to teams
-const team_predictions = "TEAM_PREDICTIONS";
+// Collections names
 
 // connect options
 var options = {
@@ -24,17 +23,30 @@ var options = {
 };
 
 // create a MongoClient
-// const client = new MongoClient(uri, { useNewUrlParser: true });
 const client = new MongoClient(uri, options);
 
 //root route
 router.get("/", function(req, res) {
+    id1 = req.query.id1;
+    id2 = req.query.id2;
+
     client.connect(function(err, db) {
       const dbase = client.db(dbName);
-      Database.getPredictions(dbase, team_predictions, function(docs) {
-        console.log(docs[0].predictions[0].homeGame);
-        console.log(docs[0]._id);
-        res.render('index', { data: docs});
+      
+        Database.getBoxScores(dbase, "BOX_SCORES", id1, id2, function(docs, docs2) {          
+            docs_data = docs[0].games[docs[0].games.length - 1];
+            docs2_data = docs2[0].games[docs2[0].games.length - 1];
+
+            console.log(docs2);
+            team1_name = docs[0].TEAM_NAME;
+            team2_name = docs2[0].TEAM_NAME;
+            res.render("box/index", 
+            {
+                team1: docs_data,
+                team2: docs2_data,
+                t1_name: team1_name,
+                t2_name: team2_name,
+            });
       });
     });
 });

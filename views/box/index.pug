@@ -1,0 +1,249 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        )
+        link(
+            rel="stylesheet", 
+            href="../stylesheets/css/creative.css"
+        )
+        link(
+            rel="stylesheet", 
+            href="../stylesheets/css/mycss.css"
+        )    
+        link(
+            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
+            crossorigin="anonymous"
+        )
+        title NPS
+    body
+        nav(class="navbar navbar-expand-lg navbar-light fixed-top py-3", id="mainNav")
+            div(class="container")
+                form(action="/", method="get")
+                    a(class="navbar-brand js-scroll-trigger", href="/") NPS
+                button(
+                    class="navbar-toggler navbar-toggler-right", 
+                    type="button", 
+                    data-toggle="collapse",
+                    data-target="#navbarResponsive",
+                    aria-controls="navbarResponsive",
+                    aria-expanded="false",
+                    aria-label="Toggle navigation",
+                )
+                    span(
+                        class='navbar-toggler-icon'
+                    )
+                div(
+                    class="collapse navbar-collapse",
+                    id="navbarResponsive"
+                )
+
+        //- Masthead Section
+        header.masthead-page
+            .container.h-100
+                .row.h-75.align-items-center.justify-content-center.text-center
+                    .col-lg-10.align-self-end
+                        h1.text-uppercase.text-white.font-weight-bold Box Score                            
+                        hr.divider.my-4
+                    .col-lg-8.align-self-baseline
+                        p.text-white-75.font-weight-light.mb-5
+                            | Box Scores of Competing teams.                  
+
+        //- Predictions section
+        - var n = 0;        
+            section#team1.page_section
+                .container.h-75
+                    .row.h-25.align-items-center.justify-content-center.text-center
+                        .col-lg-10.align-self-end
+                            h1.text-uppercase.font-weight-bold
+                                | Game Predictions
+                            hr.my-4 
+                    .row.h-50.align-items-center.justify-content-center.text-center
+                        .col-lg-10.table-responsive
+                            table.table
+                                thead
+                                    tr
+                                        th(scope='col')
+                                        th(scope='col') Date
+                                        th(scope='col') Matchup
+                                        th(scope='col') WL
+                                        th(scope='col') PTS
+                                        th(scope='col') FGM
+                                        th(scope='col') FGA
+                                        th(scope='col') FG_PCT                                        
+                                        th(scope='col') FG3A
+                                        th(scope='col') FG3_PCT
+                                        th(scope='col') FTM
+                                        th(scope='col') FTA
+                                        th(scope='col') FT_PCT
+                                        th(scope='col') OREB
+                                        th(scope='col') DREB
+                                        th(scope='col') REB
+                                        th(scope='col') AST
+                                        th(scope='col') STL
+                                        th(scope='col') BLK
+                                        th(scope='col') TOV
+                                        th(scope='col') PF
+                                tbody
+                                    tr                                        
+                                        th(scope="row")                                        
+                                        td=team1.GAME_DATE
+                                        td=team1.MATCHUP
+                                        td=team1.WL
+                                        td=team1.PTS
+                                        td=team1.FGM
+                                        td=team1.FGA
+                                        td=team1.FG_PCT                                        
+                                        td=team1.FG3A
+                                        td=team1.FG3_PCT
+                                        td=team1.FTM
+                                        td=team1.FTA
+                                        td=team1.FT_PCT
+                                        td=team1.OREB
+                                        td=team1.DREB
+                                        td=team1.REB
+                                        td=team1.AST
+                                        td=team1.STL
+                                        td=team1.BLK
+                                        td=team1.TOV
+                                        td=team1.PF
+            section#team1.page_section
+                .container.h-75
+                    .row.h-25.align-items-center.justify-content-center.text-center
+                        .col-lg-10.align-self-end
+                            h1.text-uppercase.font-weight-bold
+                                | Game Predictions
+                            hr.my-4 
+                    .row.h-50.align-items-center.justify-content-center.text-center
+                        .col-lg-10.table-responsive
+                            table.table
+                                thead
+                                    tr
+                                        th(scope='col')
+                                        th(scope='col') Date
+                                        th(scope='col') Matchup
+                                        th(scope='col') WL
+                                        th(scope='col') PTS
+                                        th(scope='col') FGM
+                                        th(scope='col') FGA
+                                        th(scope='col') FG_PCT                                        
+                                        th(scope='col') FG3A
+                                        th(scope='col') FG3_PCT
+                                        th(scope='col') FTM
+                                        th(scope='col') FTA
+                                        th(scope='col') FT_PCT
+                                        th(scope='col') OREB
+                                        th(scope='col') DREB
+                                        th(scope='col') REB
+                                        th(scope='col') AST
+                                        th(scope='col') STL
+                                        th(scope='col') BLK
+                                        th(scope='col') TOV
+                                        th(scope='col') PF
+                                tbody
+                                    tr                                        
+                                        th(scope="row")                                        
+                                        td=team2.GAME_DATE
+                                        td=team2.MATCHUP
+                                        td=team2.WL
+                                        td=team2.PTS
+                                        td=team2.FGM
+                                        td=team2.FGA
+                                        td=team2.FG_PCT                                        
+                                        td=team2.FG3A
+                                        td=team2.FG3_PCT
+                                        td=team2.FTM
+                                        td=team2.FTA
+                                        td=team2.FT_PCT
+                                        td=team2.OREB
+                                        td=team2.DREB
+                                        td=team2.REB
+                                        td=team2.AST
+                                        td=team2.STL
+                                        td=team2.BLK
+                                        td=team2.TOV
+                                        td=team2.PF   
+                                                                                        
+
+        footer
+            .container.h-25
+                h3 Glossary
+                ul(style="font-size:12px")
+                    li
+                        b #
+                        | : Season
+                    li
+                        b WIN_PCT
+                        | : Winning Percentage
+                    li
+                        b CONF_RANK
+                        | : Conference Standing
+                    li
+                        b DIV_RANK
+                        | : Division Standing
+                    li
+                        b PO_WINS
+                        | : Playoff Wins
+                    li
+                        b PO_LOSSES
+                        | : Playoff Losses
+                    li
+                        b FIN_APP
+                        | : Finals Appearance
+                    li
+                        b FGM
+                        | : Average Made Field Goals
+                    li
+                        b FGA
+                        | : Average Attempted Field Goals
+                    li
+                        b FG_PCT
+                        | : Average Field Goal Percentage
+                    li
+                        b FG3M
+                        | : Average Threes Made
+                    li
+                        b FGA
+                        | : Average Threes Attempted
+                    li
+                        b FG3_PCT
+                        | : Average Three Point Percentage
+
+
+        script(
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
+            crossorigin="anonymous"
+        )
+        script(
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",
+            crossorigin="anonymous"
+        )
+        script(
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",
+            crossorigin="anonymous"
+        )
+        script(
+            src="../scripts/vendor/jquery/jquery.min.js"
+        )
+        script(
+            src="../scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"
+        )
+        script(
+            src="../scripts/vendor/jquery-easing/jquery.easing.min.js"
+        )
+        script(
+            src="../scripts/vendor/magnific-popup/jquery.magnific-popup.min.js"
+        )
+        script(
+            src="../scripts/js/creative.js"
+        )
+        script(
+            src="https://d3js.org/d3.v5.js"
+        )

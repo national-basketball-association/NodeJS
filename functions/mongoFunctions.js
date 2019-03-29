@@ -37,5 +37,32 @@ module.exports = {
 
       callback(docs);
     });
+  },
+
+  getBoxScores: function(db, collectionName, id1, id2, callback) {
+    const collection = db.collection(collectionName);
+
+    collection.find({"_id" : id1}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      console.log("Got box scores");
+
+      collection.find({"_id" : id2}).toArray(function(err, docs2) {
+        assert.equal(err, null);
+        console.log("Got 2nd box scores");
+
+        callback(docs, docs2);
+      })
+    });
+  },
+
+  getPredictions: function(db, collectionName, callback) {
+    const collection = db.collection(collectionName);
+
+    collection.find({}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      console.log("Got predictions");
+
+      callback(docs);
+    })
   }
 };
