@@ -52,18 +52,13 @@ html
                                 class="nav-link js-scroll-trigger"
                             ) Team
 
-        //- Masthead Section
-    //    header(class="masthead-page")
-     //       div(class="container h-100")
-    //            div(class="row h-75 align-items-center justify-content-center")
-                
-// Masthead Section
+//- Masthead Section
 header.masthead-page
     .container.h-100
         .row.h-75.align-items-center.justify-content-center.text-center
             .col-lg-10.align-self-end
                 h1.text-uppercase.text-white.font-weight-bold
-                    | Atlanta Hawks
+                    = team_city + " " + team_name
                 hr.divider.my-4
             .col-lg-8.align-self-baseline
                 p.text-white-75.font-weight-light.mb-5
@@ -77,6 +72,7 @@ header.masthead-page
                 a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#player_stats') Player Statistics
             .col-lg-3.text-center
                 a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#more') More
+
 // Predictions section
 section#predictions.page-section
     .container.h-75
@@ -85,7 +81,7 @@ section#predictions.page-section
                 h1.text-uppercase.font-weight-bold
                     | Game Predictions
                 hr.my-4
-        .row.h-25.align-items-center.justify-content-center.text-center
+        .row.h-25.align-items-center.justify-content-center.text-center            
             .col-lg-4.align-self-end
                 .card.align-items-center(style='width: 18rem;')
                     .card-body
@@ -181,49 +177,46 @@ section#team_stats.page-section
                 h1.text-uppercase.font-weight-bold
                     | Team Statistics
                 hr.my-4
-        .row.h-10.align-items-center.justify-content-center.text-center
-            .col-lg-4
-                table.table
+        .row.h-25.align-items-center.justify-content-center.text-center
+            .col-lg-12.table-responsive.small-font
+                table.table.table-dark
+                    thead
+                        tr
+                            th(scope="col") #
+                            th(scope="col") Wins
+                            th(scope="col") Losses
+                            th(scope="col") WIN_PCT
+                            th(scope="col") CONF_RANK
+                            th(scope="col") DIV_RANK
+                            th(scope="col") PO_WINS
+                            th(scope="col") PO_LOSSES
+                            th(scope="col") FIN_APP
+                            th(scope="col") FGM
+                            th(scope="col") FGA
+                            th(scope="col") FG_PCT
+                            th(scope="col") FG3M
+                            th(scope="col") FG3A
+                            th(scope="col") FG3_PCT
                     tbody
-                        tr
-                            th(scope='row') Wins
-                            td 98
-                        tr
-                            th(scope='row') Losses
-                            td 18
-                        tr
-                            th(scope='row') Rank
-                            td 8
-            .col-lg-4
-                table.table
-                    tbody
-                        tr
-                            th(scope='row') Points
-                            td 98
-                            td 100
-                        tr
-                            th(scope='row') Assists
-                            td 18
-                            td 15
-                        tr
-                            th(scope='row') Turnovers
-                            td 8
-                            td 10
-            .col-lg-4
-                table.table
-                    tbody
-                        tr
-                            th(scope='row') Points
-                            td 98
-                            td 100
-                        tr
-                            th(scope='row') Assists
-                            td 18
-                            td 15
-                        tr
-                            th(scope='row') Turnovers
-                            td 8
-                            td 10
+                        each val in years
+                            tr
+                                th(scope="row")=val.YEAR
+                                td=val.WINS
+                                td=val.LOSSES
+                                td=val.WIN_PCT
+                                td=val.CONF_RANK
+                                td=val.DIV_RANK
+                                td=val.PO_WINS
+                                td=val.PO_LOSSES
+                                td=val.NBA_FINALS_APPEARANCE
+                                td=val.FGM
+                                td=val.FGA
+                                td=val.FG_PCT
+                                td=val.PG3M
+                                td=val.FG3A
+                                td=val.FG3_PCT
+
+        
 // Player Statistics Section
 section#player_stats.page-section
     .container.h-100

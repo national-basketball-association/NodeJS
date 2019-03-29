@@ -36,8 +36,14 @@ router.get("/:id", function(req, res) {
       const dbase = client.db(dbName);
       // console.log(dbase);
       Database.findByTeamName(dbase, team_stats, req.params.id, function(docs) {
-        console.log(docs[0].teamName);
-        res.render('teams/index', { title: "Hey", message: "what"});
+        console.log(docs[0].years);
+        res.render('teams/index', 
+          { 
+            team_city: docs[0].teamCity, 
+            team_name: docs[0].teamName,
+            years: docs[0].years
+          }
+        );
       });
     });
 });
