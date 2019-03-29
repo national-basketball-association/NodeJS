@@ -109,8 +109,9 @@ html
     .row
       .col-lg-4.col-md-6
         .button-margin
-          button.team.btn-lg.btn-pill.btn-ATL.btn-block(type='button', data-toggle='modal', data-target='#myModal')
-            | Atlanta Hawks
+          form(action="/teams/Hawks", method="get")
+            button.team.btn-lg.btn-pill.btn-ATL.btn-block
+              | Atlanta Hawks
       .col-lg-4.col-md-6
         .button-margin
           button.team.btn-lg.btn-pill.btn-BOS.btn-block(type='button', data-toggle='modal', data-target='#myModal')
