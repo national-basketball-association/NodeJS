@@ -85,99 +85,33 @@ html
                             | Game Predictions
                         hr.my-4
                 .row.h-25.align-items-center.justify-content-center.text-center   
-                    .col-lg-4.align-self-end
-                        .card.align-items-center(style='width: 18rem;')
-                            .card-body                            
+                    each prediction in predictions[0].predictions
 
-
-                    .col-lg-4.align-self-end
-                        .card.align-items-center(style='width: 18rem;')
-                            .card-body
-                                h5.card-title @ Celtics
-                                h6.card-subtitle.mb-2.text-muted Prediction: Win
-                                p.card-text
-                                table.table
-                                    thead
-                                        tr
-                                            th(scope='col')
-                                            th(scope='col') Hawks
-                                            th(scope='col') Celtics
-                                    tbody
-                                        tr
-                                            th(scope='row') Points
-                                            td 117
-                                            td 106
-                                        tr
-                                            th(scope='row') Assists
-                                            td 33
-                                            td 9
-                                        tr
-                                            th(scope='row') Turnovers
-                                            td 7
-                                            td 20
-                                p
-                                a.card-link(href='#') Box Score
-                                a.card-link(href='#') More Stats
-                    .col-lg-4.align-self-end
-                        .card.align-items-center(style='width: 18rem;')
-                            .card-body
-                                h5.card-title vs Warriors
-                                h6.card-subtitle.mb-2.text-muted Prediction: Loss
-                                p.card-text
-                                table.table
-                                    thead
-                                        tr
-                                            th(scope='col')
-                                            th(scope='col') Hawks
-                                            th(scope='col') Warriors
-                                    tbody
-                                        tr
-                                            th(scope='row') Points
-                                            td 87
-                                            td 130
-                                        tr
-                                            th(scope='row') Assists
-                                            td 15
-                                            td 26
-                                        tr
-                                            th(scope='row') Turnovers
-                                            td 14
-                                            td 12
-                                p
-                                a.card-link(href='#') Box Score
-                                a.card-link(href='#') More Stats
-                    .col-lg-4.align-self-end
-                        .card.align-items-center(style='width: 18rem;')
-                            .card-body
-                                h5.card-title vs Lakers
-                                h6.card-subtitle.mb-2.text-muted
-                                    | Prediction: Loss
-                                    br
-                                    |                             03/25/19
-                                p.card-text
-                                table.table
-                                    thead
-                                        tr
-                                            th(scope='col')
-                                            th(scope='col') Hawks
-                                            th(scope='col') Lakers
-                                    tbody
-                                        tr
-                                            th(scope='row') Points
-                                            td 98
-                                            td 100
-                                        tr
-                                            th(scope='row') Assists
-                                            td 18
-                                            td 15
-                                        tr
-                                            th(scope='row') Turnovers
-                                            td 8
-                                            td 10
-                                p
-                                a.card-link(href='#') Box Score
-                                a.card-link(href='#') More Stats
-
+                        .col-lg-4.align-self-end
+                            .card.align-items-center(style='width: 18rem;')
+                                .card-body   
+                                    h5.card-title=prediction.opponentFullName
+                                    if prediction.winPrediction==true
+                                        h6.card-subtitle.mb-2.text-muted Prediction: Win
+                                    else
+                                        h6.card-subtitle.mb-2.text-muted Prediction: Loss
+                                    p.card-text
+                                    table.table
+                                        thead
+                                            tr
+                                                th(scope='col')
+                                                th(scope='col')=team_name
+                                                th(scope='col')=prediction.opponentFullName
+                                        tbody
+                                            tr
+                                                th(scope='row') Assists
+                                                td=prediction.predictedAssists
+                                                td=prediction.predictedAssists - 3
+                                            tr
+                                                th(scope='row') Turnovers
+                                                td=prediction.predictedTurnovers
+                                                td=prediction.predictedAssists - 3
+                                    p                         
 
         //- Team Statistics section
         section#team_stats.page-section

@@ -64,5 +64,16 @@ module.exports = {
 
       callback(docs);
     })
+  },
+
+  getTeamPredictions: function(db, collectionName, team_id, callback) {
+    const collection = db.collection(collectionName);
+    id = parseInt(team_id);
+    collection.find({"_id" : id}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      console.log("Got predictions");
+
+      callback(docs);
+    })
   }
 };
