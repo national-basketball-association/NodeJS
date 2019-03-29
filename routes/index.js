@@ -9,7 +9,6 @@ const assert = require('assert');
 
 // connection URL
 const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
-// const uri = "mongodb+srv://rmohamme:green12@cluster0-8eolw.mongodb.net/test?retryWrites=true";
 
 // Database name
 const dbName = 'NPS';
