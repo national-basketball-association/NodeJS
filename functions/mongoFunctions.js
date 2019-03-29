@@ -2,8 +2,8 @@
 const assert = require('assert');
 
 module.exports = {
-  findDocuments: function(db, callback) {
-    const collection = db.collection('Teams');
+  findDocuments: function(db, collectionName, callback) {
+    const collection = db.collection(collectionName);
 
     // Find all documents
     collection.find({}).toArray(function(err, docs) {

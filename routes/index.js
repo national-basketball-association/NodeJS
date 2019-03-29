@@ -27,10 +27,8 @@ const client = new MongoClient(uri, options);
 //root route
 router.get("/", function(req, res) {
     client.connect(function(err, db) {
-      // console.log(db);
       const dbase = client.db(dbName);
-      // console.log(dbase);
-      Database.findDocuments(dbase, function(docs) {
+      Database.findDocuments(dbase "PLAYER_STATS", function(docs) {
         console.log(docs);
         res.render('index', { title: "Hey", message: "Hello"});
       });
