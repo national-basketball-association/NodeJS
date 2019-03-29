@@ -28,7 +28,7 @@ module.exports = {
   },
 
   getPlayers: function(db, collectionName, callback) {
-    const collection = db.collection(coolectionName);
+    const collection = db.collection(collectionName);
 
     // Get all players
     collection.find({}).toArray(function(err, docs) {

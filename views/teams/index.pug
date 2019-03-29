@@ -52,334 +52,264 @@ html
                                 class="nav-link js-scroll-trigger"
                             ) Team
 
-//- Masthead Section
-header.masthead-page
-    .container.h-100
-        .row.h-75.align-items-center.justify-content-center.text-center
-            .col-lg-10.align-self-end
-                h1.text-uppercase.text-white.font-weight-bold
-                    = team_city + " " + team_name
-                hr.divider.my-4
-            .col-lg-8.align-self-baseline
-                p.text-white-75.font-weight-light.mb-5
-                    | Game statistics and predictions.
-        .row.h-25.justify-content-center.text-center
-            .col-lg-3.text-center
-                a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#predictions') Game Predictions
-            .col-lg-3.text-center
-                a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#team_stats') Team Statistics
-            .col-lg-3.text-center
-                a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#player_stats') Player Statistics
-            .col-lg-3.text-center
-                a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#more') More
+        //- Masthead Section
+        header.masthead-page
+            .container.h-100
+                .row.h-75.align-items-center.justify-content-center.text-center
+                    .col-lg-10.align-self-end
+                        h1.text-uppercase.text-white.font-weight-bold
+                            = team_city + " " + team_name
+                        hr.divider.my-4
+                    .col-lg-8.align-self-baseline
+                        p.text-white-75.font-weight-light.mb-5
+                            | Game statistics and predictions.
+                .row.h-25.justify-content-center.text-center
+                    .col-lg-3.text-center
+                        a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#predictions') Game Predictions
+                    .col-lg-3.text-center
+                        a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#team_stats') Team Statistics
+                    .col-lg-3.text-center
+                        a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#player_stats') Player Statistics                    
 
-// Predictions section
-section#predictions.page-section
-    .container.h-75
-        .row.h-75.align-items-center.justify-content-center.text-center
-            .col-lg-10.align-self-end
-                h1.text-uppercase.font-weight-bold
-                    | Game Predictions
-                hr.my-4
-        .row.h-25.align-items-center.justify-content-center.text-center            
-            .col-lg-4.align-self-end
-                .card.align-items-center(style='width: 18rem;')
-                    .card-body
-                        h5.card-title @ Celtics
-                        h6.card-subtitle.mb-2.text-muted Prediction: Win
-                        p.card-text
+        //- Predictions section
+        section#predictions.page-section
+            .container.h-75
+                .row.h-75.align-items-center.justify-content-center.text-center
+                    .col-lg-10.align-self-end
+                        h1.text-uppercase.font-weight-bold
+                            | Game Predictions
+                        hr.my-4
+                .row.h-25.align-items-center.justify-content-center.text-center   
+                    .col-lg-4.align-self-end
+                        .card.align-items-center(style='width: 18rem;')
+                            .card-body                            
+
+
+                    .col-lg-4.align-self-end
+                        .card.align-items-center(style='width: 18rem;')
+                            .card-body
+                                h5.card-title @ Celtics
+                                h6.card-subtitle.mb-2.text-muted Prediction: Win
+                                p.card-text
+                                table.table
+                                    thead
+                                        tr
+                                            th(scope='col')
+                                            th(scope='col') Hawks
+                                            th(scope='col') Celtics
+                                    tbody
+                                        tr
+                                            th(scope='row') Points
+                                            td 117
+                                            td 106
+                                        tr
+                                            th(scope='row') Assists
+                                            td 33
+                                            td 9
+                                        tr
+                                            th(scope='row') Turnovers
+                                            td 7
+                                            td 20
+                                p
+                                a.card-link(href='#') Box Score
+                                a.card-link(href='#') More Stats
+                    .col-lg-4.align-self-end
+                        .card.align-items-center(style='width: 18rem;')
+                            .card-body
+                                h5.card-title vs Warriors
+                                h6.card-subtitle.mb-2.text-muted Prediction: Loss
+                                p.card-text
+                                table.table
+                                    thead
+                                        tr
+                                            th(scope='col')
+                                            th(scope='col') Hawks
+                                            th(scope='col') Warriors
+                                    tbody
+                                        tr
+                                            th(scope='row') Points
+                                            td 87
+                                            td 130
+                                        tr
+                                            th(scope='row') Assists
+                                            td 15
+                                            td 26
+                                        tr
+                                            th(scope='row') Turnovers
+                                            td 14
+                                            td 12
+                                p
+                                a.card-link(href='#') Box Score
+                                a.card-link(href='#') More Stats
+                    .col-lg-4.align-self-end
+                        .card.align-items-center(style='width: 18rem;')
+                            .card-body
+                                h5.card-title vs Lakers
+                                h6.card-subtitle.mb-2.text-muted
+                                    | Prediction: Loss
+                                    br
+                                    |                             03/25/19
+                                p.card-text
+                                table.table
+                                    thead
+                                        tr
+                                            th(scope='col')
+                                            th(scope='col') Hawks
+                                            th(scope='col') Lakers
+                                    tbody
+                                        tr
+                                            th(scope='row') Points
+                                            td 98
+                                            td 100
+                                        tr
+                                            th(scope='row') Assists
+                                            td 18
+                                            td 15
+                                        tr
+                                            th(scope='row') Turnovers
+                                            td 8
+                                            td 10
+                                p
+                                a.card-link(href='#') Box Score
+                                a.card-link(href='#') More Stats
+
+
+        //- Team Statistics section
+        section#team_stats.page-section
+            .container.h-100
+                .row.h-25.align-items-center.justify-content-center.text-center
+                    .col-lg-10.align-self-end
+                        h1.text-uppercase.font-weight-bold
+                            | Team Statistics
+                        hr.my-4
+                .row.h-25.align-items-center.justify-content-center.text-center
+                    .col-lg-12.table-responsive.small-font
                         table.table
                             thead
                                 tr
-                                    th(scope='col')
-                                    th(scope='col') Hawks
-                                    th(scope='col') Celtics
+                                    th(scope="col") #
+                                    th(scope="col") Wins
+                                    th(scope="col") Losses
+                                    th(scope="col") WIN_PCT
+                                    th(scope="col") CONF_RANK
+                                    th(scope="col") DIV_RANK
+                                    th(scope="col") PO_WINS
+                                    th(scope="col") PO_LOSSES
+                                    th(scope="col") FIN_APP
+                                    th(scope="col") FGM
+                                    th(scope="col") FGA
+                                    th(scope="col") FG_PCT
+                                    th(scope="col") FG3M
+                                    th(scope="col") FG3A
+                                    th(scope="col") FG3_PCT
                             tbody
-                                tr
-                                    th(scope='row') Points
-                                    td 117
-                                    td 106
-                                tr
-                                    th(scope='row') Assists
-                                    td 33
-                                    td 9
-                                tr
-                                    th(scope='row') Turnovers
-                                    td 7
-                                    td 20
-                        p
-                        a.card-link(href='#') Box Score
-                        a.card-link(href='#') More Stats
-            .col-lg-4.align-self-end
-                .card.align-items-center(style='width: 18rem;')
-                    .card-body
-                        h5.card-title vs Warriors
-                        h6.card-subtitle.mb-2.text-muted Prediction: Loss
-                        p.card-text
-                        table.table
-                            thead
-                                tr
-                                    th(scope='col')
-                                    th(scope='col') Hawks
-                                    th(scope='col') Warriors
-                            tbody
-                                tr
-                                    th(scope='row') Points
-                                    td 87
-                                    td 130
-                                tr
-                                    th(scope='row') Assists
-                                    td 15
-                                    td 26
-                                tr
-                                    th(scope='row') Turnovers
-                                    td 14
-                                    td 12
-                        p
-                        a.card-link(href='#') Box Score
-                        a.card-link(href='#') More Stats
-            .col-lg-4.align-self-end
-                .card.align-items-center(style='width: 18rem;')
-                    .card-body
-                        h5.card-title vs Lakers
-                        h6.card-subtitle.mb-2.text-muted
-                            | Prediction: Loss
-                            br
-                            |                             03/25/19
-                        p.card-text
-                        table.table
-                            thead
-                                tr
-                                    th(scope='col')
-                                    th(scope='col') Hawks
-                                    th(scope='col') Lakers
-                            tbody
-                                tr
-                                    th(scope='row') Points
-                                    td 98
-                                    td 100
-                                tr
-                                    th(scope='row') Assists
-                                    td 18
-                                    td 15
-                                tr
-                                    th(scope='row') Turnovers
-                                    td 8
-                                    td 10
-                        p
-                        a.card-link(href='#') Box Score
-                        a.card-link(href='#') More Stats
-// Team Statistics section
-section#team_stats.page-section
-    .container.h-100
-        .row.h-25.align-items-center.justify-content-center.text-center
-            .col-lg-10.align-self-end
-                h1.text-uppercase.font-weight-bold
-                    | Team Statistics
-                hr.my-4
-        .row.h-25.align-items-center.justify-content-center.text-center
-            .col-lg-12.table-responsive.small-font
-                table.table.table-dark
-                    thead
-                        tr
-                            th(scope="col") #
-                            th(scope="col") Wins
-                            th(scope="col") Losses
-                            th(scope="col") WIN_PCT
-                            th(scope="col") CONF_RANK
-                            th(scope="col") DIV_RANK
-                            th(scope="col") PO_WINS
-                            th(scope="col") PO_LOSSES
-                            th(scope="col") FIN_APP
-                            th(scope="col") FGM
-                            th(scope="col") FGA
-                            th(scope="col") FG_PCT
-                            th(scope="col") FG3M
-                            th(scope="col") FG3A
-                            th(scope="col") FG3_PCT
-                    tbody
-                        each val in years
-                            tr
-                                th(scope="row")=val.YEAR
-                                td=val.WINS
-                                td=val.LOSSES
-                                td=val.WIN_PCT
-                                td=val.CONF_RANK
-                                td=val.DIV_RANK
-                                td=val.PO_WINS
-                                td=val.PO_LOSSES
-                                td=val.NBA_FINALS_APPEARANCE
-                                td=val.FGM
-                                td=val.FGA
-                                td=val.FG_PCT
-                                td=val.PG3M
-                                td=val.FG3A
-                                td=val.FG3_PCT
+                                each val in years
+                                    tr
+                                        th(scope="row")=val.YEAR
+                                        td=val.WINS
+                                        td=val.LOSSES
+                                        td=val.WIN_PCT
+                                        td=val.CONF_RANK
+                                        td=val.DIV_RANK
+                                        td=val.PO_WINS
+                                        td=val.PO_LOSSES
+                                        td=val.NBA_FINALS_APPEARANCE
+                                        td=val.FGM
+                                        td=val.FGA
+                                        td=val.FG_PCT
+                                        td=val.PG3M
+                                        td=val.FGM
+                                        td=val.FG3_PCT
 
         
-// Player Statistics Section
-section#player_stats.page-section
-    .container.h-100
-        .row.h-25.align-items-center.justify-content-center.text-center
-            .col-lg-10.align-self-end
-                h1.text-uppercase.font-weight-bold
-                    | Player Statistics
-                hr.my-4
-        table.table
-            thead
-                tr
-                    th(scope='col') Name
-                    th(scope='col') GP
-                    th(scope='col') GS
-                    th(scope='col') MPG
-                    th(scope='col') PTS
-                    th(scope='col') OR
-                    th(scope='col') DR
-                    th(scope='col') REB
-                    th(scope='col') AST
-                    th(scope='col') STL
-                    th(scope='col') BLK
-                    th(scope='col') TO
-                    th(scope='col') PF
-                    th(scope='col') AST/TO
-                    th(scope='col') PER
-            tbody
-                tr
-                    th(scope='row') John Collins
-                    td 56
-                    td 54
-                    td 29.5
-                    td 19.3
-                    td 3.6
-                    td 6.1
-                    td 9.7
-                    td 1.9
-                    td 0.4
-                    td 0.6
-                    td 1.9
-                    td 3.3
-                    td 1.0
-                    td 22.02
-                tr
-                    th(scope='row') Trae Young
-                    td 75
-                    td 75
-                    td 30.8
-                    td 18.9
-                    td 0.7
-                    td 2.8
-                    td 3.6
-                    td 7.9
-                    td 0.8
-                    td 0.2
-                    td 3.9
-                    td 1.7
-                    td 2.0
-                    td 16.60
-                tr
-                    th(scope='row') Taurean Prince
-                    td 51
-                    td 43
-                    td 28.1
-                    td 13.4
-                    td 0.4
-                    td 3.3
-                    td 3.7
-                    td 2.2
-                    td 1.0
-                    td 0.4
-                    td 1.9
-                    td 2.5
-                    td 1.1
-                    td 12.20
-                tr
-                    th(scope='row') Kent Bazemore
-                    td 61
-                    td 35
-                    td 24.8
-                    td 11.8
-                    td 0.6
-                    td 3.3
-                    td 3.9
-                    td 2.3
-                    td 1.4
-                    td 0.7
-                    td 1.9
-                    td 2.6
-                    td 1.2
-                    td 12.28
-                tr
-                    th(scope='row') Dewayne Dedmon
-                    td 63
-                    td 51
-                    td 25.1
-                    td 10.9
-                    td 1.7
-                    td 5.9
-                    td 7.5
-                    td 1.4
-                    td 1.1
-                    td 1.1
-                    td 1.3
-                    td 3.3
-                    td 1.1
-                    td 16.22
-                tr
-                    th(scope='row') Jeremy Lin
-                    td 51
-                    td 1
-                    td 19.7
-                    td 10.7
-                    td 0.3
-                    td 2.0
-                    td 2.3
-                    td 3.5
-                    td 0.7
-                    td 0.1
-                    td 1.9
-                    td 1.9
-                    td 1.8
-                    td 15.97
-                tr
-                    th(scope='row') Alex Len
-                    td 71
-                    td 25
-                    td 19.5
-                    td 10.4
-                    td 2.0
-                    td 3.4
-                    td 5.5
-                    td 1.0
-                    td 0.4
-                    td 0.9
-                    td 1.3
-                    td 2.6
-                    td 0.8
-                    td 16.52
-                tr
-                    th(scope='row') Kevin Huerter
-                    td 69
-                    td 53
-                    td 27.2
-                    td 9.5
-                    td 0.8
-                    td 2.5
-                    td 3.2
-                    td 2.8
-                    td 0.9
-                    td 0.3
-                    td 1.5
-                    td 2.1
-                    td 1.9
-                    td 9.80
-    .row.align-items-center.justify-content-center.text-center.my-4.py-4
-        .col-lg-6.align-self-end
-            button.btn.btn-outline-secondary.btn-lg(type='button', data-toggle='modal', data-target='#bettingOdds')
-                | Betting Odds
-        .col-lg-6.align-self-end
-            a(href='predictions.html')
-                button.btn.btn-outline-secondary.btn-lg(type='button')
-                    | Upcoming Game Predictions
+        //- Player Statistics Section
+        section#player_stats.page-section
+            .container.h-100
+                .row.h-25.align-items-center.justify-content-center.text-center
+                    .col-lg-10.align-self-end
+                        h1.text-uppercase.font-weight-bold
+                            | Player Statistics
+                        hr.my-4
+                .row.h-75.align-items-center.justify-content-center.text-center
+                    .col-lg-10.small-font
+                        table.table.table-responsive
+                            thead
+                                tr
+                                    th(scope='col') Name
+                                    th(scope='col') GP
+                                    th(scope='col') GS
+                                    th(scope='col') MPG
+                                    th(scope='col') PTS
+                                    th(scope='col') OR
+                                    th(scope='col') DR
+                                    th(scope='col') REB
+                                    th(scope='col') AST
+                                    th(scope='col') STL
+                                    th(scope='col') BLK
+                                    th(scope='col') TO
+                                    th(scope='col') PF
+                            tbody
+                                each player in players_stats
+                                    if player.seasons[player.seasons.length - 1].TEAM_ID== team_id                        
+                                        tr
+                                            th(scope="row")=player.playerName
+                                            td=player.seasons[player.seasons.length - 1].GP
+                                            td=player.seasons[player.seasons.length - 1].GS
+                                            td=player.seasons[player.seasons.length - 1].MIN
+                                            td=player.seasons[player.seasons.length - 1].PTS
+                                            td=player.seasons[player.seasons.length - 1].OREB
+                                            td=player.seasons[player.seasons.length - 1].DREB
+                                            td=player.seasons[player.seasons.length - 1].REB
+                                            td=player.seasons[player.seasons.length - 1].AST
+                                            td=player.seasons[player.seasons.length - 1].STL
+                                            td=player.seasons[player.seasons.length - 1].BLK
+                                            td=player.seasons[player.seasons.length - 1].TOV
+                                            td=player.seasons[player.seasons.length - 1].PF                            
+
+        footer
+            .container.h-25
+                h3 Glossary
+                ul(style="font-size:12px")
+                    li
+                        b #
+                        | : Season
+                    li
+                        b WIN_PCT
+                        | : Winning Percentage
+                    li
+                        b CONF_RANK
+                        | : Conference Standing
+                    li
+                        b DIV_RANK
+                        | : Division Standing
+                    li
+                        b PO_WINS
+                        | : Playoff Wins
+                    li
+                        b PO_LOSSES
+                        | : Playoff Losses
+                    li
+                        b FIN_APP
+                        | : Finals Appearance
+                    li
+                        b FGM
+                        | : Average Made Field Goals
+                    li
+                        b FGA
+                        | : Average Attempted Field Goals
+                    li
+                        b FG_PCT
+                        | : Average Field Goal Percentage
+                    li
+                        b FG3M
+                        | : Average Threes Made
+                    li
+                        b FGA
+                        | : Average Threes Attempted
+                    li
+                        b FG3_PCT
+                        | : Average Three Point Percentage
+
 
         script(
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js",

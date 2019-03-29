@@ -16,6 +16,7 @@ const dbName = 'NPS';
 
 // Collection names relevant to teams
 const team_stats = "TEAM_STATS";
+const player_stats = "PLAYER_STATS";
 
 // connect options
 var options = {
@@ -36,14 +37,23 @@ router.get("/:id", function(req, res) {
       const dbase = client.db(dbName);
       // console.log(dbase);
       Database.findByTeamName(dbase, team_stats, req.params.id, function(docs) {
-        console.log(docs[0].years);
-        res.render('teams/index', 
+        // console.log(docs[0].years);
+
+        Database.getPlayers(dbase, player_stats, function(players) {
+          console.log(players[0].seasons.length)
+          // len = players[0].seasons.length
+          // console.log(len)
+          console.log(players[0].seasons[0].TEAM_ID)
+          res.render('teams/index', 
           { 
+            team_id: docs[0]._id,
             team_city: docs[0].teamCity, 
             team_name: docs[0].teamName,
-            years: docs[0].years
+            years: docs[0].years,
+            players_stats: players
           }
         );
+        });
       });
     });
 });

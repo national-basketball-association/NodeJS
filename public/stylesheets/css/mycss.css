@@ -37,7 +37,16 @@ header.masthead-page h1 {
 
 /* FONTS */
 .small-font {
-  font-size: .1rem;
+  font-size: .8rem;
+}
+
+.font-white {
+  color: white;
+}
+
+/* BACKGROUND COLORS */
+.bkgrd-orange {
+  background-color: #f4623a;
 }
 
 /* TEAM COLORS */
