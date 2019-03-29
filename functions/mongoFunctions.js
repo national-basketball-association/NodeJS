@@ -25,5 +25,17 @@ module.exports = {
 
       callback(docs);      
     });
+  },
+
+  getPlayers: function(db, collectionName, callback) {
+    const collection = db.collection(coolectionName);
+
+    // Get all players
+    collection.find({}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      console.log("Found records");
+
+      callback(docs);
+    });
   }
 };
