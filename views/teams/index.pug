@@ -23,7 +23,8 @@ html
     body
         nav(class="navbar navbar-expand-lg navbar-light fixed-top py-3", id="mainNav")
             div(class="container")
-                a(class="navbar-brand js-scroll-trigger", href="#page-top") NPS
+                form(action="/", method="get")
+                    a(class="navbar-brand js-scroll-trigger", href="/") NPS
                 button(
                     class="navbar-toggler navbar-toggler-right", 
                     type="button", 
@@ -43,15 +44,19 @@ html
                     ul(class="navbar-nav ml-auto my-2 my-lg-0")
                         li(class="nav-item")
                             a(
-                                href="#about",
+                                href="#predictions",
                                 class="nav-link js-scroll-trigger"
-                            ) About
+                            ) Game Predictions
                         li(class="nav-item")
                             a(
-                                href="#teams"
+                                href="#team_stats"
                                 class="nav-link js-scroll-trigger"
-                            ) Team
-
+                            ) Team Statistics
+                        li(class="nav-item")
+                            a(
+                                href="#player_stats"
+                                class="nav-link js-scroll-trigger"
+                            ) Player Statistics
         //- Masthead Section
         header.masthead-page
             .container.h-100
