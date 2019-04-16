@@ -50,11 +50,23 @@ header.masthead-page h1 {
 }
 
 .bkgrd-blue {
-  background-color: #033E8C;
+  background-color: #1754bf;
+}
+
+.bkgrd-dark-blue {
+  background-color: #0f3b86;
 }
 
 .bkgrd-white {
   background-color: #ffffff;
+}
+
+.color-white-link {
+  color: #ffffff;
+}
+
+.color-white-link:hover {
+  color: #ffffff;
 }
 
 /* TEAM COLORS */

@@ -96,24 +96,24 @@ html
     
     // Upcoming games section
     section#upcoming_games.page-section      
-      .container.h-25.w-50.bkgrd-blue.rounded-top
+      .container.h-25.w-40.bkgrd-blue.rounded-top
         .row
           .col-lg-6
             h6.text-uppercase.font-white.my-4.mx-4(style="margin-bottom: 2rem !important")
               | Games
         
         .col-lg-12
-          ul.nav.nav-pills.nav-fill.font-white.rounded-top#gameTab(role="tabllist")            
-            li.nav-item.bkgrd-white
-              a.nav-link.active#upcoming_tab(
+          ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+            li.nav-item.font-white
+              a.nav-link.color-white-link.active#upcoming_tab(
                 data-toggle="tab"
                 href="#upcoming"
                 role="tab"
                 aria-controls="upcoming-tab"
                 aria-selected="true"
               ) Upcoming predictions            
-            li.nav-item.bkgrd-white
-              a.nav-link#previous_games(
+            li.nav-item.font-white
+              a.nav-link.color-white-link#previous_games(
                 data-toggle="tab"
                 href="#previous"
                 role="tab"
@@ -121,7 +121,7 @@ html
                 aria-selected="true"
               ) Previous games              
                                   
-      .container.h-75.border.w-50.tab-content#myTabContent
+      .container.h-75.border.w-40.tab-content#myTabContent
         .tab-pane.fade.show.active#upcoming(
           role="tabpanel"
           aria-labelledby="upcoming_tab"
@@ -132,10 +132,18 @@ html
                 .row
                   .col-lg-8.border-right(style="text-align: left;")
                     .row
-                      .col-lg-12
-                        p(style="padding-top: 1rem") Warriors
+                      .col-lg-4
+                        img.rounded.float-left.w-100.h-100(
+                          src="https://d1si3tbndbzwz9.cloudfront.net/basketball/team/16/logo.png"
+                          alt=""
+                        )
+                      .col-lg-8
+                        p Warriors
                     .row
                       .col-lg-12
+                        img.rounded.float-left.w-25(
+                          src="https://d1si3tbndbzwz9.cloudfront.net/basketball/team/1/logo.png"
+                        )
                         p Celtics 
                   .col-lg-4(style="padding-top: 1rem")
                     span.align-text-bottom.font-weight-bold.small-font Winner: Warriors

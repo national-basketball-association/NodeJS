@@ -4349,7 +4349,7 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 0px solid #dee2e6;
 }
 
 .nav-tabs .nav-item {
@@ -4362,9 +4362,10 @@ input[type="button"].btn-block {
   border-top-right-radius: 0.25rem;
 }
 
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+/* Old version */
+/* .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
-}
+} */
 
 .nav-tabs .nav-link.disabled {
   color: #6c757d;
@@ -4372,11 +4373,19 @@ input[type="button"].btn-block {
   border-color: transparent;
 }
 
-.nav-tabs .nav-link.active,
+/* Old version */
+/* .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
+} */
+
+/* new version */
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: #0f3b86;
+  border-bottom: 4px solid #f8f9fa;
 }
 
 .nav-tabs .dropdown-menu {
@@ -8373,6 +8382,13 @@ button.bg-dark:focus {
 .w-50 {
   width: 50% !important;
 }
+
+/* Riz edits start */
+.w-40 {
+  width: 45% !important;
+}
+
+/* Riz edits end */
 
 .w-75 {
   width: 75% !important;
