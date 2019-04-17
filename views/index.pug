@@ -101,25 +101,25 @@ html
           .col-lg-6
             h6.text-uppercase.font-white.my-4.mx-4(style="margin-bottom: 2rem !important")
               | Games
-        
-        .col-lg-12
-          ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
-            li.nav-item.font-white
-              a.nav-link.color-white-link.active#upcoming_tab(
-                data-toggle="tab"
-                href="#upcoming"
-                role="tab"
-                aria-controls="upcoming-tab"
-                aria-selected="true"
-              ) Upcoming game predictions            
-            li.nav-item.font-white
-              a.nav-link.color-white-link#previous_games(
-                data-toggle="tab"
-                href="#previous"
-                role="tab"
-                aria-controls="previous-tab"
-                aria-selected="true"
-              ) Previous games              
+        .row        
+          .col-lg-12
+            ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+              li.nav-item.font-white
+                a.nav-link.color-white-link.active#upcoming_tab(
+                  data-toggle="tab"
+                  href="#upcoming"
+                  role="tab"
+                  aria-controls="upcoming-tab"
+                  aria-selected="true"
+                ) Upcoming game predictions            
+              li.nav-item.font-white
+                a.nav-link.color-white-link#previous_games(
+                  data-toggle="tab"
+                  href="#previous"
+                  role="tab"
+                  aria-controls="previous-tab"
+                  aria-selected="true"
+                ) Previous games              
                                   
       .container.h-75.border.hard-w-600.tab-content#myTabContent
         .tab-pane.fade.show.active#upcoming(
