@@ -44,6 +44,11 @@ header.masthead-page h1 {
   color: white;
 }
 
+.name-font {
+  font-size: 14px;
+  font-family: arial, sans-serif;
+}
+
 /* BACKGROUND COLORS */
 .bkgrd-orange {
   background-color: #f4623a;
@@ -67,6 +72,34 @@ header.masthead-page h1 {
 
 .color-white-link:hover {
   color: #ffffff;
+}
+
+/* TEAM SIZES */
+.team-logo-icon {
+  height: 40px;
+  width: auto;
+}
+
+/* HARD PADDING */
+.padding-top-5 {
+  padding-top: 5px;
+}
+
+.padding-top-12 {
+  padding-top: 12px;
+}
+
+.padding-left-0 {
+  padding-left: 0px;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
+}
+
+/* HARD DIMENSIONS */
+.hard-w-600 {
+  width: 600px;
 }
 
 /* TEAM COLORS */
