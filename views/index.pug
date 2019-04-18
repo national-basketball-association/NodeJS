@@ -127,28 +127,30 @@ html
           role="tabpanel"
           aria-labelledby="upcoming_tab"
         )
-          .row.h-75.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+          .row.hard-h-100.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
             .col-lg-6(style="padding-right: 0px; padding-left: 0px")
-              button.btn.btn-block.border-right
-                .row
-                  .col-lg-8.border-right(style="text-align: left;")
-                    .row
-                      .col-lg-3
-                        img.rounded.float-left.team-logo-icon(
-                          src="https://d1si3tbndbzwz9.cloudfront.net/basketball/team/16/logo.png"
-                          alt=""
-                        )
-                      .col-lg-9.padding-top-12.padding-left-10.name-font
-                          | Warriors
-                    .row
-                      .col-lg-3
-                        img.rounded.float-left.team-logo-icon(
-                            src="https://d1si3tbndbzwz9.cloudfront.net/basketball/team/1/logo.png"
-                        )
-                      .col-lg-9.padding-top-12.padding-left-10.name-font
-                        | Celtics                                                                      
-                  .col-lg-4(style="padding-top: 1rem")
-                    span.align-text-bottom.font-weight-bold.small-font.name-font Winner: Cavaliers            
+              form(action="/predictions/warriors", method="get")
+                button.btn.btn-block.border-right
+                  .row
+                    .col-lg-8.border-right(style="text-align: left;")
+                      .row
+                        .col-lg-3
+                          img.rounded.float-left.team-logo-icon(
+                            src="http://www.logospng.com/images/14/nba-power-rankings-december-3-2014-article-tsn-14191."
+                            alt=""
+                          )
+                        .col-lg-9.padding-top-12.padding-left-10.name-font
+                            | Warriors
+                      .row
+                        .col-lg-3
+                          img.rounded.float-left.team-logo-icon(
+                              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/1200px-New_Orleans_Pelicans_logo.svg.png"
+                              alt=""
+                          )
+                        .col-lg-9.padding-top-12.padding-left-10.name-font
+                          | Celtics                                                                      
+                    .col-lg-4(style="padding-top: 1rem")
+                      span.align-text-bottom.font-weight-bold.small-font.name-font Winner: Cavaliers            
         .tab-pane.fade#previous(
           role="tabpanel"
           aria-labelledby="previous_games"
