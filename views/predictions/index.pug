@@ -1,3 +1,190 @@
+doctype html
 html
-    body
-        h1 WOrks
+  head
+    meta(charset="utf-8")
+    meta(
+      name="viewport",
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    )
+    link(
+      rel="stylesheet", 
+      href="../stylesheets/css/creative.css"
+    )
+    link(
+      rel="stylesheet", 
+      href="../stylesheets/css/mycss.css"
+    )    
+    link(
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
+      crossorigin="anonymous"
+    )
+    title NPS
+  body
+
+    // Navigation
+    nav(class="navbar navbar-expand-lg navbar-light fixed-top py-3", id="mainNav")
+      div(class="container")
+        a(class="navbar-brand js-scroll-trigger", href="#header") NPS
+        button(
+          class="navbar-toggler navbar-toggler-right", 
+          type="button", 
+          data-toggle="collapse",
+          data-target="#navbarResponsive",
+          aria-controls="navbarResponsive",
+          aria-expanded="false",
+          aria-label="Toggle navigation",
+        )
+          span(
+            class="navbar-toggler-icon"
+          )
+        div(
+          class="collapse navbar-collapse",
+          id="navbarResponsive"
+        )
+          ul(class="navbar-nav ml-auto my-2 my-lg-0")
+            li(class="nav-item")
+              a(
+                href="#about",
+                class="nav-link js-scroll-trigger"
+              ) About
+            li(class="nav-item")
+              a(
+                href="#upcoming_games"
+                class="nav-link js-scroll-trigger"
+              ) Upcoming Games
+            li(class="nav-item")
+              a(
+                href="#teams"
+                class="nav-link js-scroll-trigger"
+              ) Team
+
+    // Masthead Section
+    header#header.masthead-page
+      .container.h-100
+        .row.h-75.align-items-center.justify-content-center.text-center
+          .col-lg-10.align-self-end
+            h1.text-uppercase.text-white.font-weight-bold
+              | Game Prediction
+            hr.divider.my-4
+
+    // predictions section
+    section#upcoming_games.page-section      
+      .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
+        .row
+          .col-lg-5.padding-left-40.margin-top-30
+            img.rounded.float-left.team-logo-main(
+              src="https://worldsportlogos.com/wp-content/uploads/2018/03/Orlando-Magic-logo.png"
+            )      
+
+          .col-lg-2
+            h1.h-100.text-center.padding-top-50-perc -      
+          .col-lg-5.align-content-right.padding-right-40.margin-top-30
+            img.rounded.float-right.team-logo-main(
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/1200px-New_Orleans_Pelicans_logo.svg.png"                              
+            )
+        .row
+          .col-lg-6.padding-left-40
+            h6 Indiana Pacers
+          .col-lg-6.text-right.padding-right-40
+            h6 Boston Celtics
+            
+        
+        .row
+          .col-lg-12.padding-left-0.padding-right-0
+            ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+              li.nav-item.font-white
+                a.nav-link.color-white-link.active#upcoming_tab(
+                  data-toggle="tab"
+                  href="#upcoming"
+                  role="tab"
+                  aria-controls="upcoming-tab"
+                  aria-selected="true"
+                ) Upcoming game predictions            
+              li.nav-item.font-white
+                a.nav-link.color-white-link#previous_games(
+                  data-toggle="tab"
+                  href="#previous"
+                  role="tab"
+                  aria-controls="previous-tab"
+                  aria-selected="true"
+                ) Previous games              
+                                  
+      .container.h-75.border.hard-w-700.tab-content#myTabContent
+        .tab-pane.fade.show.active#upcoming(
+          role="tabpanel"
+          aria-labelledby="upcoming_tab"
+        )
+          .row.hard-h-100.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+            .col-lg-6(style="padding-right: 0px; padding-left: 0px")
+              form(action="/predictions/warriors", method="get")
+                button.btn.btn-block.border-right
+                  .row
+                    .col-lg-8.border-right(style="text-align: left;")
+                      .row
+                        .col-lg-3
+                          img.rounded.float-left.team-logo-icon(
+                            src="https://worldsportlogos.com/wp-content/uploads/2018/03/Orlando-Magic-logo.png"
+                            alt=""
+                          )
+                        .col-lg-9.padding-top-12.padding-left-10.name-font
+                            | Warriors
+                      .row
+                        .col-lg-3
+                          img.rounded.float-left.team-logo-icon(
+                              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/1200px-New_Orleans_Pelicans_logo.svg.png"
+                              alt=""
+                          )
+                        .col-lg-9.padding-top-12.padding-left-10.name-font
+                          | Celtics                                                                      
+                    .col-lg-4(style="padding-top: 1rem")
+                      span.align-text-bottom.font-weight-bold.small-font.name-font Winner: Cavaliers            
+        .tab-pane.fade#previous(
+          role="tabpanel"
+          aria-labelledby="previous_games"
+        )
+          .row
+            .col
+              p Nonsense               
+        
+      
+    script(
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
+      crossorigin="anonymous"
+    )
+    script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",
+      crossorigin="anonymous"
+    )
+    script(
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",
+      crossorigin="anonymous"
+    )
+    script(
+      src="../scripts/vendor/jquery/jquery.min.js"
+    )
+    script(
+      src="../scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"
+    )
+    script(
+      src="../scripts/vendor/jquery-easing/jquery.easing.min.js"
+    )
+    script(
+      src="../scripts/vendor/magnific-popup/jquery.magnific-popup.min.js"
+    )
+    script(
+      src="../scripts/js/creative.js"
+    )
+    script(
+      type="text/javascript",
+      src="../scripts/js/csvData.js"
+    )
+    script(
+      src="https://d3js.org/d3.v5.js"
+    )
+    script(
+      src="../scripts/js/myJS.js"
+    )

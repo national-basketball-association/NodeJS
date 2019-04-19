@@ -102,6 +102,12 @@ header.masthead-page h1 {
   margin: 5px;
 }
 
+.team-logo-main {
+  height: 60px;
+  width: auto;
+  margin: 5px;
+}
+
 /* HARD PADDING */
 
 .padding-top-5 {
@@ -112,6 +118,10 @@ header.masthead-page h1 {
   padding-top: 12px;
 }
 
+.padding-top-50-perc {
+  padding-top: 50%;
+}
+
 .padding-left-0 {
   padding-left: 0;
 }
@@ -120,14 +130,31 @@ header.masthead-page h1 {
   padding-left: 10px;
 }
 
+.padding-left-40 {
+  padding-left: 40px
+}
+
 .padding-right-0 {
   padding-right: 0;
 }
+
+.padding-right-40 {
+  padding-right: 40px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
 
 /* HARD DIMENSIONS */
 
 .hard-w-600 {
   width: 600px;
+}
+
+.hard-w-700 {
+  width: 700px
 }
 
 .hard-h-100 {
