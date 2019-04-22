@@ -45,6 +45,14 @@ header.masthead-page h1 {
   color: white;
 }
 
+.font-black {
+  color: black;
+}
+
+.font-black:hover {
+  color: black !important;
+}
+
 .name-font {
   font-size: 14px;
   font-family: arial, sans-serif;
@@ -93,6 +101,15 @@ header.masthead-page h1 {
   background-color: #0f3b86;
 }
 
+.color-black-link {
+  background-color: white;
+}
+
+.color-black-link.active {
+  background-color: white !important;
+  border-bottom: 5px solid #dadfe8 !important;
+}
+
 /* TEAM SIZES */
 
 .team-logo-icon {
@@ -134,12 +151,20 @@ header.masthead-page h1 {
   padding-left: 40px
 }
 
+.padding-left-70 {
+  padding-left: 70px;
+}
+
 .padding-right-0 {
   padding-right: 0;
 }
 
 .padding-right-40 {
   padding-right: 40px;
+}
+
+.padding-right-70 {
+  padding-right: 70px;
 }
 
 .margin-top-30 {

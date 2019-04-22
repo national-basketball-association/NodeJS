@@ -72,73 +72,54 @@ html
     section#upcoming_games.page-section      
       .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
         .row
-          .col-lg-5.padding-left-40.margin-top-30
+          .col-lg-5.padding-left-70.margin-top-30
             img.rounded.float-left.team-logo-main(
               src="https://worldsportlogos.com/wp-content/uploads/2018/03/Orlando-Magic-logo.png"
             )      
-
           .col-lg-2
             h1.h-100.text-center.padding-top-50-perc -      
-          .col-lg-5.align-content-right.padding-right-40.margin-top-30
+          .col-lg-5.align-content-right.padding-right-70.margin-top-30
             img.rounded.float-right.team-logo-main(
               src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/1200px-New_Orleans_Pelicans_logo.svg.png"                              
             )
         .row
-          .col-lg-6.padding-left-40
+          .col-lg-6.padding-left-70
             h6 Indiana Pacers
-          .col-lg-6.text-right.padding-right-40
+          .col-lg-6.text-right.padding-right-70
             h6 Boston Celtics
+        .row     
+          .col-lg-12     
+            hr.my-4
             
         
-        .row
+        .row.bkgrd-white
           .col-lg-12.padding-left-0.padding-right-0
             ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
-              li.nav-item.font-white
-                a.nav-link.color-white-link.active#upcoming_tab(
+              li.nav-item
+                a.nav-link.color-black-link.active.font-black#upcoming_tab(
                   data-toggle="tab"
                   href="#upcoming"
                   role="tab"
                   aria-controls="upcoming-tab"
                   aria-selected="true"
-                ) Upcoming game predictions            
-              li.nav-item.font-white
-                a.nav-link.color-white-link#previous_games(
+                ) Indiana Pacers
+              li.nav-item
+                a.nav-link.color-black-link.font-black#previous_games(
                   data-toggle="tab"
                   href="#previous"
                   role="tab"
                   aria-controls="previous-tab"
                   aria-selected="true"
-                ) Previous games              
+                ) Boston Celtics
                                   
       .container.h-75.border.hard-w-700.tab-content#myTabContent
         .tab-pane.fade.show.active#upcoming(
           role="tabpanel"
           aria-labelledby="upcoming_tab"
         )
-          .row.hard-h-100.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
-            .col-lg-6(style="padding-right: 0px; padding-left: 0px")
-              form(action="/predictions/warriors", method="get")
-                button.btn.btn-block.border-right
-                  .row
-                    .col-lg-8.border-right(style="text-align: left;")
-                      .row
-                        .col-lg-3
-                          img.rounded.float-left.team-logo-icon(
-                            src="https://worldsportlogos.com/wp-content/uploads/2018/03/Orlando-Magic-logo.png"
-                            alt=""
-                          )
-                        .col-lg-9.padding-top-12.padding-left-10.name-font
-                            | Warriors
-                      .row
-                        .col-lg-3
-                          img.rounded.float-left.team-logo-icon(
-                              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/1200px-New_Orleans_Pelicans_logo.svg.png"
-                              alt=""
-                          )
-                        .col-lg-9.padding-top-12.padding-left-10.name-font
-                          | Celtics                                                                      
-                    .col-lg-4(style="padding-top: 1rem")
-                      span.align-text-bottom.font-weight-bold.small-font.name-font Winner: Cavaliers            
+          .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+            table.table
+              thead
         .tab-pane.fade#previous(
           role="tabpanel"
           aria-labelledby="previous_games"
