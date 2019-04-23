@@ -16,6 +16,9 @@ const dbName = 'NPS';
 // Collection names relevant to teams
 const team_predictions = "TEAM_PREDICTIONS";
 
+//Teams meta Database
+const teams = require('../common/teams');
+
 // connect options
 var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
@@ -31,10 +34,32 @@ const client = new MongoClient(uri, options);
 router.get("/:id", function(req, res) {
     client.connect(function(err, db) {
       const dbase = client.db(dbName);
-      Database.getPredictions(dbase, team_predictions, function(docs) {
-        console.log(docs[0].predictions[0].homeGame);
-        console.log(docs[0]._id);
-        res.render('predictions/index', { data: docs});
+      const teamId = teams.getTeamId(req.params.id);
+      if(!teamId) {
+        throw "team is not found";
+      }
+      Database.getTeamPredictions(dbase, team_predictions, teamId, function(docs) {
+        const team = teams.getTeamById(teamId);
+        const latestPrediction = docs[0].predictions[docs[0].predictions.length-1];
+        if(!latestPrediction) {
+          res.render('predictions/index', { data: undefined});
+        } else {
+          let date = latestPrediction["date"];
+          date = date.split('-').join('');
+          date = parseInt(date);
+
+          let now = new Date().toISOString().slice(0,10);
+          now = now.split('-').join('');
+          now = parseInt(now);
+
+          const opponentTeam = teams.getTeamById(latestPrediction["opponentId"]);
+          const data = {
+            data: latestPrediction, //(now <= date) ? latestPrediction : undefined,
+            team: team,
+            opponentTeam: opponentTeam
+          }
+          res.render('predictions/index', data);
+        }
       });
     });
 });
