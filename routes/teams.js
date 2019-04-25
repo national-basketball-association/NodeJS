@@ -33,17 +33,23 @@ const client = new MongoClient(uri, options);
 // team specific route
 router.get("/:id", function(req, res) {
     console.log(req.params.id);
-    client.connect(function(err, db) {
-      // console.log(db);
-      const dbase = client.db(dbName);
-      // console.log(dbase);
-      Database.findByTeamName(dbase, team_stats, req.params.id, function(docs) {
-        // console.log(docs[0].years);
 
+    /* 
+        Send: 
+            - Player stats
+            - Team stats
+            - Box scores
+            - Game predictions
+            - Get team info
+    */ 
+
+    client.connect(function(err, db) {
+      const dbase = client.db(dbName);
+           
+      Database.findByTeamName(dbase, team_stats, req.params.id, function(docs) {     
+            console.log(docs);
         Database.getPlayers(dbase, player_stats, function(players) {
-          console.log(players[0].seasons.length)
-          // len = players[0].seasons.length
-          // console.log(len)
+              
           console.log(players[0].seasons[0].TEAM_ID)
           curr_team_id = docs[0]._id
 
