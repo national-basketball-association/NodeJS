@@ -27,8 +27,7 @@ html
       div(class="container")
         form(action="/", method="get")
             button.navbar-brand.js-scroll.trigger.btn NPS
-            //- a(class="navbar-brand js-scroll-trigger", href="#header") NPS
-            
+
         button(
           class="navbar-toggler navbar-toggler-right", 
           type="button", 
@@ -46,21 +45,6 @@ html
           id="navbarResponsive"
         )
           ul(class="navbar-nav ml-auto my-2 my-lg-0")
-            //- li(class="nav-item")
-            //-   a(
-            //-     href="#about",
-            //-     class="nav-link js-scroll-trigger"
-            //-   ) About
-            //- li(class="nav-item")
-            //-   a(
-            //-     href="#upcoming_games"
-            //-     class="nav-link js-scroll-trigger"
-            //-   ) Upcoming Games
-            //- li(class="nav-item")
-            //-   a(
-            //-     href="#teams"
-            //-     class="nav-link js-scroll-trigger"
-            //-   ) Team
 
     // Masthead Section
     header#header.masthead-page
@@ -90,11 +74,27 @@ html
                         )
 
                 .row
-                    .col-lg-6.padding-left-70
-                        h6= data.team.fullName
+                    if data.firstTeamPrediction.winPrediction
+                        .col-lg-5.text-center
+                            h6.display-block()= data.team.fullName
+                            span.badge.badge-success Win
 
-                    .col-lg-6.text-right.padding-right-70
-                        h6= data.opponentTeam.fullName
+                        .col-lg-2
+
+                        .col-lg-5.text-center
+                            h6.display-block()= data.opponentTeam.fullName
+                            span.badge.badge-danger Lose
+                    
+                    else
+                        .col-lg-5.text-center
+                            h6.display-block()= data.team.fullName
+                            span.badge.badge-danger Lose
+
+                        .col-lg-2
+
+                        .col-lg-5.text-center
+                            h6.display-block()= data.opponentTeam.fullName
+                            span.badge.badge-success Win
                 .row     
                     .col-lg-12     
                         hr.my-4
