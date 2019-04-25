@@ -23,7 +23,7 @@ module.exports = {
       assert.equal(err, null);
       console.log("Found records");
 
-      callback(docs);      
+      callback(docs);
     });
   },
 
@@ -71,8 +71,6 @@ module.exports = {
     id = parseInt(team_id);
     collection.find({"_id" : id}).toArray(function(err, docs) {
       assert.equal(err, null);
-      console.log("Got predictions");
-
       callback(docs);
     })
   }
