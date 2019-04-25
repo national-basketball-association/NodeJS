@@ -547,8 +547,19 @@ const teamIds = {
 function getTeamId(routeName) {
   return teamIds[routeName.toLowerCase()];
 }
+
+
+//this is kinda inefficient but im lazy
+function getRouteName(id) {
+  for(routeName in teamIds) {
+    const teamid = teamIds[routeName];
+    if(teamid == id)
+      return routeName;
+  }
+  throw "Could not find team by id";
+}
 function getTeamById(id) {
-  const team = Object.create(teams[id]); //does a deep copy
+  const team = teams[id];
   if(!team)
     throw "teamId is not found!";
   const mainColor = team["mainColor"];
@@ -577,5 +588,14 @@ function getImage(id) {
   return team['imgUrl'];
 }
 
+function getFullName(id) {
+  const team = getTeamById(id);
+  return team["fullName"];
+}
 
-module.exports = {getTeamId, getTeamById, getMainColor, getSecondaryColor, getImage};
+function getAbreviation(id) {
+  const team = getTeamById(id);
+  return team["abreviation"];
+}
+
+module.exports = {getTeamId, getTeamById, getMainColor, getSecondaryColor, getImage, getRouteName, getFullName, getAbreviation};

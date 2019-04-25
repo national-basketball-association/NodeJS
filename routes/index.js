@@ -9,6 +9,8 @@ const assert = require('assert');
 
 const dates = require('../common/date');
 
+const teams = require('../common/teams');
+
 // connection URL
 const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
 
@@ -33,14 +35,31 @@ const client = new MongoClient(uri, options);
 router.get("/", function(req, res) {
     client.connect(function(err, db) {
       const dbase = client.db(dbName);
+      let set = {}; //set of games
       Database.getPredictions(dbase, team_predictions, function(docs) {
         let predictions = [];
         docs.forEach(function(doc) {
-          const prediction = doc.predictions[doc.predictions.length-1];
+
+          //fill out the prediction object
+          let prediction = doc.predictions[doc.predictions.length-1];
+          prediction["imgUrl"] = teams.getImage(doc._id);
+          prediction["opponentImgUrl"] = teams.getImage(prediction["opponentId"]);
+          prediction["route"] = teams.getRouteName(doc._id);
+          prediction["opponentRoute"] = teams.getRouteName(prediction["opponentId"]);
+          prediction["fullName"] = teams.getFullName(doc._id);
+
+          let arr = [prediction["route"], prediction["opponentRoute"]].sort();
+          arr = arr.join("");
+
+
           const date = prediction["date"];
-          if(dates.isDateNowOrLater(date)) {
-            prediction.push(prediction);
+          if(!set[arr]) {
+            if(dates.isDateNowOrLater(date)) { //DELETE OR TRUE
+              set[arr] = true;
+              predictions.push(prediction);
+            }
           }
+          
         });
         res.render('index', { predictions: predictions});
       });
