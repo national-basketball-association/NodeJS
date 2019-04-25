@@ -73,16 +73,19 @@ html
       if data
         .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
           .row
-            .col-lg-5.padding-left-70.margin-top-30
-              img.rounded.float-left.team-logo-main(
+            .col-lg-5.margin-top-30
+              img.rounded.display-block.team-logo-main(
                 src= team.imgUrl
               )      
+
             .col-lg-2
-              h1.h-100.text-center.padding-top-50-perc -      
-            .col-lg-5.align-content-right.padding-right-70.margin-top-30
-              img.rounded.float-right.team-logo-main(
+              h1.h-100.text-center.padding-top-50-perc -   
+
+            .col-lg-5.margin-top-30
+              img.rounded.display-block.team-logo-main(
                 src= opponentTeam.imgUrl                              
               )
+
           .row
             .col-lg-6.padding-left-70
               h6= team.fullName
@@ -93,53 +96,103 @@ html
               hr.my-4
               
           
-          .row.bkgrd-white
-            .col-lg-12.padding-left-0.padding-right-0
-              ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
-                li.nav-item
-                  a.nav-link.color-black-link.active.font-black#upcoming_tab(
-                    data-toggle="tab"
-                    href="#upcoming"
-                    role="tab"
-                    aria-controls="upcoming-tab"
-                    aria-selected="true"
-                  )= team.fullName
-                li.nav-item
-                  a.nav-link.color-black-link.font-black#previous_games(
-                    data-toggle="tab"
-                    href="#previous"
-                    role="tab"
-                    aria-controls="previous-tab"
-                    aria-selected="true"
-                  )= opponentTeam.fullName
+        //-   .row.bkgrd-white
+        //-     .col-lg-12.padding-left-0.padding-right-0
+        //-       ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+        //-         li.nav-item
+        //-           a.nav-link.color-black-link.active.font-black#upcoming_tab(
+        //-             data-toggle="tab"
+        //-             href="#upcoming"
+        //-             role="tab"
+        //-             aria-controls="upcoming-tab"
+        //-             aria-selected="true"
+        //-           )= team.fullName
+        //-         li.nav-item
+        //-           a.nav-link.color-black-link.font-black#previous_games(
+        //-             data-toggle="tab"
+        //-             href="#previous"
+        //-             role="tab"
+        //-             aria-controls="previous-tab"
+        //-             aria-selected="true"
+        //-           )= opponentTeam.fullName
                                     
         .container.h-75.border.hard-w-700.tab-content#myTabContent
-          .tab-pane.fade.show.active#upcoming(
-            role="tabpanel"
-            aria-labelledby="upcoming_tab"
-          )
-            .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
-              table.table
-                thead
-          .tab-pane.fade#previous(
-            role="tabpanel"
-            aria-labelledby="previous_games"
-          )
             .row
-              .col
-                p Nonsense               
+                .col-lg-3.text-center
+                    h4.vertical-center Assists
+                
+                .col-lg-2.text-center
+                    h6.vertical-center 20
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h6.vertical-center 20
+
+                .col-lg-3.text-center
+                    h4.vertical-center Assists
+
+            .row
+                .col-lg-3.text-center
+                    h3.vertical-center Assists
+                
+                .col-lg-2.text-center
+                    h6.vertical-center 20
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h6.vertical-center 20
+
+                .col-lg-3.text-center
+                    h3.vertical-center Assists
+
+            .row
+                .col-lg-3.text-center
+                    h3.vertical-center Assists
+                
+                .col-lg-2.text-center
+                    h6.vertical-center 20
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h6.vertical-center 20
+
+                .col-lg-3.text-center
+                    h3.vertical-center Assists
+        //-   .tab-pane.fade.show.active#upcoming(
+        //-     role="tabpanel"
+        //-     aria-labelledby="upcoming_tab"
+        //-   )
+        //-     .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+        //-       table.table
+        //-         thead
+        //-   .tab-pane.fade#previous(
+        //-     role="tabpanel"
+        //-     aria-labelledby="previous_games"
+        //-   )
+        //-     .row
+        //-       .col
+        //-         p Nonsense               
         
-      else
-        page-section
-          .container.h-75
-            .row.h-75.align-items-center.justify-content-center.text-center
-              .col-lg-10.align-self-end
-                h1.text-uppercase.font-weight-bold
-                  | No Upcoming games
-                hr.my-4
-                .col-log-8.align-self-baseline
-                  p.font-weight-light.mb-5
-                    | no upcoming games
+    //-   else
+    //-     page-section
+    //-       .container.h-75
+    //-         .row.h-75.align-items-center.justify-content-center.text-center
+    //-           .col-lg-10.align-self-end
+    //-             h1.text-uppercase.font-weight-bold
+    //-               | No Upcoming games
+    //-             hr.my-4
+    //-             .col-log-8.align-self-baseline
+    //-               p.font-weight-light.mb-5
+    //-                 | no upcoming games
     script(
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",

@@ -40,25 +40,47 @@ router.get("/:id", function(req, res) {
       }
       Database.getTeamPredictions(dbase, team_predictions, teamId, function(docs) {
         const team = teams.getTeamById(teamId);
-        const latestPrediction = docs[0].predictions[docs[0].predictions.length-1];
-        if(!latestPrediction) {
+        const firstTeamLatestPrediction = docs[0].predictions[docs[0].predictions.length-1];
+        if(!firstTeamLatestPrediction) {
           res.render('predictions/index', { data: undefined});
         } else {
-          let date = latestPrediction["date"];
-          date = date.split('-').join('');
-          date = parseInt(date);
+            let date = firstTeamLatestPrediction["date"];
+            date = date.split('-').join('');
+            date = parseInt(date);
 
-          let now = new Date().toISOString().slice(0,10);
-          now = now.split('-').join('');
-          now = parseInt(now);
+            let now = new Date().toISOString().slice(0,10);
+            now = now.split('-').join('');
+            now = parseInt(now);
+            
+            console.log("Info: ")
+            console.log(firstTeamLatestPrediction)
 
-          const opponentTeam = teams.getTeamById(latestPrediction["opponentId"]);
-          const data = {
-            data: latestPrediction, //(now <= date) ? latestPrediction : undefined,
-            team: team,
-            opponentTeam: opponentTeam
-          }
-          res.render('predictions/index', data);
+            const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
+            console.log(firstTeamLatestPrediction.opponentId)
+
+            Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
+                flag = 0;
+                docs[0].predictions.forEach(opponentPrediction => {
+                    if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
+
+                        
+                        console.log(opponentPrediction)
+
+                        const data = {
+                            firstTeamPrediction: firstTeamLatestPrediction, 
+                            secondTeamPrediction: opponentPrediction,
+                            team: team,
+                            opponentTeam: opponentTeam
+                        }
+                        res.render('predictions/index', data);
+                        flag = 1;
+                    }
+                });
+
+                if (flag == 0) {
+                    res.render('predictions/index', { data: undefined});
+                }
+            });
         }
       });
     });
