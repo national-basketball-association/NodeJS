@@ -12,9 +12,7 @@ function isDateNowOrLater(date) {
     let day = (now[0].length == 1) ? '0' + now[0] : now[0];
     let month = (now[1].length == 1) ? '0' + now[1] : now[1];
     let year = now[2];
-    now = year + day + month;
-    console.log(now);
-    console.log(date);
+    now = year + day + month;    
 	return now <= date
 }
 

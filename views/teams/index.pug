@@ -77,62 +77,114 @@ html
                         a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#player_stats') Player Statistics
 
 
-        section#upcoming_games.page-section
-            .container.h-25.hard-w-600.bkgrd-blue.rounded-top
+        //- section#upcoming_games.page-section
+        //-     .container.h-25.hard-w-600.bkgrd-blue.rounded-top
+        //-         .row
+        //-             .col-lg-6
+        //-                 h6.text-uppercase.font-white.my-4.mx-4(style="margin-bottom: 2rem !important")
+        //-                     | gameses
+        //-         .row
+        //-             .col-lg-12.padding-left-0.padding-right-0
+        //-                 ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+        //-                     li.nav-item.font-white
+        //-                         a.nav-link.color-white-link.active#upcoming_tab(
+        //-                         data-toggle="tab"
+        //-                         href="#upcoming"
+        //-                         role="tab"
+        //-                         aria-controls="upcoming-tab"
+        //-                         aria-selected="true"
+        //-                         ) Upcoming game predictions            
+        //-                     li.nav-item.font-white
+        //-                         a.nav-link.color-white-link#previous_games(
+        //-                         data-toggle="tab"
+        //-                         href="#previous"
+        //-                         role="tab"
+        //-                         aria-controls="previous-tab"
+        //-                         aria-selected="true"
+        //-                         ) Previous games              
+
+        section#upcoming_games.page-section        
+            .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
                 .row
-                    .col-lg-6
-                        h6.text-uppercase.font-white.my-4.mx-4(style="margin-bottom: 2rem !important")
-                        | gameses
+                    .col-lg-5.margin-top-30
+                        img.rounded.display-block.team-logo-main(
+                            src= "https://www.nba.com/assets/logos/teams/primary/web/UTA.svg"
+                        )      
+                    
+                    .col-lg-7.margin-top-30
+                        h1.display-block.text-left.vertical-center
+                            span.badge.badge-dark UTAH JAZZ
+
                 .row
+                    .col-lg-12
+                        hr.my-4
+                
+                .row.bkgrd-white
                     .col-lg-12.padding-left-0.padding-right-0
                         ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
-                            li.nav-item.font-white
-                                a.nav-link.color-white-link.active#upcoming_tab(
-                                data-toggle="tab"
-                                href="#upcoming"
-                                role="tab"
-                                aria-controls="upcoming-tab"
-                                aria-selected="true"
-                                ) Upcoming game predictions            
-                            li.nav-item.font-white
-                                a.nav-link.color-white-link#previous_games(
-                                data-toggle="tab"
-                                href="#previous"
-                                role="tab"
-                                aria-controls="previous-tab"
-                                aria-selected="true"
-                                ) Previous games              
+                            li.nav-item
+                                a.nav-link.color-black-link.active.font-black#team_tab(
+                                    data-toggle="tab"
+                                    href="#team"
+                                    role="tab"
+                                    aria-controls="team-tab"
+                                    aria-selected="true"
+                                ) Team Stats
+                            li.nav-item
+                                a.nav-link.color-black-link.font-black#player_tab(
+                                    data-toggle="tab"
+                                    href="#player"
+                                    role="tab"
+                                    aria-controls="player-tab"
+                                    aria-selected="true"
+                                ) Player Stats
+                            li.nav-item
+                                a.nav-link.color-black-link.font-black#box_tab(
+                                    data-toggle="tab"
+                                    href="#box"
+                                    role="tab"
+                                    aria-controls="box-tab"
+                                    aria-selected="true"
+                                ) Box Scores
+                            li.nav-item
+                                a.nav-link.color-black-link.font-black#game_tab(
+                                    data-toggle="tab"
+                                    href="#game"
+                                    role="tab"
+                                    aria-controls="game-tab"
+                                    aria-selected="true"
+                                ) Game Predictions
 
-        //- section#upcoming_games.page-section        
-        //-     .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
-        //-         .row
-        //-             .col-lg-5.margin-top-30
-        //-                 img.rounded.display-block.team-logo-main(
-        //-                     src= "https://www.nba.com/assets/logos/teams/primary/web/UTA.svg"
-        //-                 )      
 
-        //-             .col-lg-2
-        //-                 h1.h-100.text-center.padding-top-50-perc -   
-
-        //-             .col-lg-5.margin-top-30
-        //-                 img.rounded.display-block.team-logo-main(
-        //-                     src= "https://www.nba.com/assets/logos/teams/primary/web/UTA.svg"
-        //-                 )
-
-        //-         .row                
-        //-             .col-lg-5.text-center
-        //-                 h6.display-block() Team
-        //-                 span.badge.badge-success Win
-
-        //-             .col-lg-2
-
-        //-             .col-lg-5.text-center
-        //-                 h6.display-block() Team
-        //-                 span.badge.badge-danger Lose
-
-        //-         .row     
-        //-             .col-lg-12     
-        //-                 hr.my-4                  
+            .container.h-75.border.hard-w-700.tab-content#myTabContent
+                .tab-pane.fade.show.active#team(
+                    role="tabpanel"
+                    aria-labelledby="upcoming_tab"
+                )
+                    .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+                        .col-lg-12
+                            p Test
+                .tab-pane.fade#player(
+                    role="tabpanel"
+                    aria-labelledby="previous_games"
+                )
+                    .row
+                        .col
+                            p Nonsense 
+                .tab-pane.fade#box(
+                    role="tabpanel"
+                    aria-labelledby="previous_games"
+                )
+                    .row
+                        .col
+                            p Nonsense
+                .tab-pane.fade#game(
+                    role="tabpanel"
+                    aria-labelledby="previous_games"
+                )
+                    .row
+                        .col
+                            p Nonsense
 
         //- Predictions section
         section#predictions.page-section
