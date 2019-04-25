@@ -44,21 +44,36 @@ router.get("/:id", function(req, res) {
       }
       Database.getTeamPredictions(dbase, team_predictions, teamId, function(docs) {
         const team = teams.getTeamById(teamId);
-        const latestPrediction = docs[0].predictions[docs[0].predictions.length-1];
-        if(!latestPrediction) {
+        const firstTeamLatestPrediction = docs[0].predictions[docs[0].predictions.length-1];
+        if(!firstTeamLatestPrediction) {
           res.render('predictions/index', { data: undefined});
         } else {
-          let date = latestPrediction["date"];
+            let date = firstTeamLatestPrediction["date"];
+            futureGame = dates.isDateNowOrLater(date);            
+            const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
 
-
-          const futureGame = dates.isDateNowOrLater(date);
-          const opponentTeam = teams.getTeamById(latestPrediction["opponentId"]);
-          const data = {
-            data: (futureGame) ? latestPrediction : undefined,
-            team: team,
-            opponentTeam: opponentTeam
-          }
-          res.render('predictions/index', data);
+            futureGame = true;
+            if(futureGame) {                
+                Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
+                    docs[0].predictions.forEach(opponentPrediction => {
+                        if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
+                            
+                            firstTeamLatestPrediction.predictedAssistTurnoverRatio = firstTeamLatestPrediction.predictedAssistTurnoverRatio.toFixed(2);
+                            opponentPrediction.predictedAssistTurnoverRatio = opponentPrediction.predictedAssistTurnoverRatio.toFixed(2);                            
+                            
+                            const data = {
+                                firstTeamPrediction: firstTeamLatestPrediction, 
+                                secondTeamPrediction: opponentPrediction,
+                                team: team,
+                                opponentTeam: opponentTeam
+                            }
+                            res.render('predictions/index', {data});
+                        }
+                    });
+                });
+            } else {                
+                res.render('predictions/index', { data: undefined });
+            }
         }
       });
     });

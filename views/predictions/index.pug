@@ -70,76 +70,236 @@ html
 
     // predictions section
     section#upcoming_games.page-section
-      if data
-        .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
-          .row
-            .col-lg-5.padding-left-70.margin-top-30
-              img.rounded.float-left.team-logo-main(
-                src= team.imgUrl
-              )      
-            .col-lg-2
-              h1.h-100.text-center.padding-top-50-perc -      
-            .col-lg-5.align-content-right.padding-right-70.margin-top-30
-              img.rounded.float-right.team-logo-main(
-                src= opponentTeam.imgUrl                              
-              )
-          .row
-            .col-lg-6.padding-left-70
-              h6= team.fullName
-            .col-lg-6.text-right.padding-right-70
-              h6= opponentTeam.fullName
-          .row     
-            .col-lg-12     
-              hr.my-4
+        if data
+            .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
+                .row
+                    .col-lg-5.margin-top-30
+                        img.rounded.display-block.team-logo-main(
+                            src= data.team.imgUrl
+                        )      
+
+                    .col-lg-2
+                        h1.h-100.text-center.padding-top-50-perc -   
+
+                    .col-lg-5.margin-top-30
+                        img.rounded.display-block.team-logo-main(
+                            src= data.opponentTeam.imgUrl                              
+                        )
+
+                .row
+                    .col-lg-6.padding-left-70
+                        h6= data.team.fullName
+
+                    .col-lg-6.text-right.padding-right-70
+                        h6= data.opponentTeam.fullName
+                .row     
+                    .col-lg-12     
+                        hr.my-4
               
           
-          .row.bkgrd-white
-            .col-lg-12.padding-left-0.padding-right-0
-              ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
-                li.nav-item
-                  a.nav-link.color-black-link.active.font-black#upcoming_tab(
-                    data-toggle="tab"
-                    href="#upcoming"
-                    role="tab"
-                    aria-controls="upcoming-tab"
-                    aria-selected="true"
-                  )= team.fullName
-                li.nav-item
-                  a.nav-link.color-black-link.font-black#previous_games(
-                    data-toggle="tab"
-                    href="#previous"
-                    role="tab"
-                    aria-controls="previous-tab"
-                    aria-selected="true"
-                  )= opponentTeam.fullName
+        //-   .row.bkgrd-white
+        //-     .col-lg-12.padding-left-0.padding-right-0
+        //-       ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+        //-         li.nav-item
+        //-           a.nav-link.color-black-link.active.font-black#upcoming_tab(
+        //-             data-toggle="tab"
+        //-             href="#upcoming"
+        //-             role="tab"
+        //-             aria-controls="upcoming-tab"
+        //-             aria-selected="true"
+        //-           )= team.fullName
+        //-         li.nav-item
+        //-           a.nav-link.color-black-link.font-black#previous_games(
+        //-             data-toggle="tab"
+        //-             href="#previous"
+        //-             role="tab"
+        //-             aria-controls="previous-tab"
+        //-             aria-selected="true"
+        //-           )= opponentTeam.fullName
                                     
         .container.h-75.border.hard-w-700.tab-content#myTabContent
-          .tab-pane.fade.show.active#upcoming(
-            role="tabpanel"
-            aria-labelledby="upcoming_tab"
-          )
-            .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
-              table.table
-                thead
-          .tab-pane.fade#previous(
-            role="tabpanel"
-            aria-labelledby="previous_games"
-          )
             .row
-              .col
-                p Nonsense               
+                .col-lg-3.text-center
+                    h6.vertical-center Assists
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedAssists
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedAssists
+
+                .col-lg-3.text-center
+                    h6.vertical-center Assists
+            
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Rebounds
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedRebounds
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedRebounds
+
+                .col-lg-3.text-center
+                    h6.vertical-center Rebounds
+            
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Turnovers
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedTurnovers
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedTurnovers
+
+                .col-lg-3.text-center
+                    h6.vertical-center Turnovers
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Blocks
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedBlocks
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedBlocks
+
+                .col-lg-3.text-center
+                    h6.vertical-center Blocks
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Steals
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedSteals
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedSteals
+
+                .col-lg-3.text-center
+                    h6.vertical-center Steals
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Fouls
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedFouls
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedFouls
+
+                .col-lg-3.text-center
+                    h6.vertical-center Fouls
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Assist/Turnover
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedAssistTurnoverRatio
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedAssistTurnoverRatio
+
+                .col-lg-3.text-center
+                    h6.vertical-center Assist/Turnover
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center 3PT %
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedThreePtPercentage
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedThreePtPercentage
+
+                .col-lg-3.text-center
+                    h6.vertical-center 3PT %
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center FT %
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedFreeThrowPercentage
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedFreeThrowPercentage
+
+                .col-lg-3.text-center
+                    h6.vertical-center FT %
+
+ 
+
+
+        //-   .tab-pane.fade.show.active#upcoming(
+        //-     role="tabpanel"
+        //-     aria-labelledby="upcoming_tab"
+        //-   )
+        //-     .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+        //-       table.table
+        //-         thead
+        //-   .tab-pane.fade#previous(
+        //-     role="tabpanel"
+        //-     aria-labelledby="previous_games"
+        //-   )
+        //-     .row
+        //-       .col
+        //-         p Nonsense               
         
-      else
-        page-section
-          .container.h-75
-            .row.h-75.align-items-center.justify-content-center.text-center
-              .col-lg-10.align-self-end
-                h1.text-uppercase.font-weight-bold
-                  | No Upcoming games
-                hr.my-4
-                .col-log-8.align-self-baseline
-                  p.font-weight-light.mb-5
-                    | no upcoming games
+    //-   else
+    //-     page-section
+    //-       .container.h-75
+    //-         .row.h-75.align-items-center.justify-content-center.text-center
+    //-           .col-lg-10.align-self-end
+    //-             h1.text-uppercase.font-weight-bold
+    //-               | No Upcoming games
+    //-             hr.my-4
+    //-             .col-log-8.align-self-baseline
+    //-               p.font-weight-light.mb-5
+    //-                 | no upcoming games
     script(
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
