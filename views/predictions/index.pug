@@ -70,30 +70,31 @@ html
 
     // predictions section
     section#upcoming_games.page-section
-      if data
-        .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
-          .row
-            .col-lg-5.margin-top-30
-              img.rounded.display-block.team-logo-main(
-                src= team.imgUrl
-              )      
+        if data
+            .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
+                .row
+                    .col-lg-5.margin-top-30
+                        img.rounded.display-block.team-logo-main(
+                            src= data.team.imgUrl
+                        )      
 
-            .col-lg-2
-              h1.h-100.text-center.padding-top-50-perc -   
+                    .col-lg-2
+                        h1.h-100.text-center.padding-top-50-perc -   
 
-            .col-lg-5.margin-top-30
-              img.rounded.display-block.team-logo-main(
-                src= opponentTeam.imgUrl                              
-              )
+                    .col-lg-5.margin-top-30
+                        img.rounded.display-block.team-logo-main(
+                            src= data.opponentTeam.imgUrl                              
+                        )
 
-          .row
-            .col-lg-6.padding-left-70
-              h6= team.fullName
-            .col-lg-6.text-right.padding-right-70
-              h6= opponentTeam.fullName
-          .row     
-            .col-lg-12     
-              hr.my-4
+                .row
+                    .col-lg-6.padding-left-70
+                        h6= data.team.fullName
+
+                    .col-lg-6.text-right.padding-right-70
+                        h6= data.opponentTeam.fullName
+                .row     
+                    .col-lg-12     
+                        hr.my-4
               
           
         //-   .row.bkgrd-white
@@ -119,54 +120,160 @@ html
         .container.h-75.border.hard-w-700.tab-content#myTabContent
             .row
                 .col-lg-3.text-center
-                    h4.vertical-center Assists
+                    h6.vertical-center Assists
                 
                 .col-lg-2.text-center
-                    h6.vertical-center 20
+                    h4.vertical-center()=data.firstTeamPrediction.predictedAssists
 
                 .col-lg-2.text-center
                     // h1.h-100.padding-top-20-perc -
                     h1.vertical-center -
 
                 .col-lg-2.text-center
-                    h6.vertical-center 20
+                    h4.vertical-center()=data.secondTeamPrediction.predictedAssists
 
                 .col-lg-3.text-center
-                    h4.vertical-center Assists
+                    h6.vertical-center Assists
+            
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Rebounds
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedRebounds
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedRebounds
+
+                .col-lg-3.text-center
+                    h6.vertical-center Rebounds
+            
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Turnovers
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedTurnovers
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedTurnovers
+
+                .col-lg-3.text-center
+                    h6.vertical-center Turnovers
 
             .row
                 .col-lg-3.text-center
-                    h3.vertical-center Assists
+                    h6.vertical-center Blocks
                 
                 .col-lg-2.text-center
-                    h6.vertical-center 20
+                    h4.vertical-center()=data.firstTeamPrediction.predictedBlocks
 
                 .col-lg-2.text-center
                     // h1.h-100.padding-top-20-perc -
                     h1.vertical-center -
 
                 .col-lg-2.text-center
-                    h6.vertical-center 20
+                    h4.vertical-center()=data.secondTeamPrediction.predictedBlocks
 
                 .col-lg-3.text-center
-                    h3.vertical-center Assists
+                    h6.vertical-center Blocks
 
             .row
                 .col-lg-3.text-center
-                    h3.vertical-center Assists
+                    h6.vertical-center Steals
                 
                 .col-lg-2.text-center
-                    h6.vertical-center 20
+                    h4.vertical-center()=data.firstTeamPrediction.predictedSteals
 
                 .col-lg-2.text-center
                     // h1.h-100.padding-top-20-perc -
                     h1.vertical-center -
 
                 .col-lg-2.text-center
-                    h6.vertical-center 20
+                    h4.vertical-center()=data.secondTeamPrediction.predictedSteals
 
                 .col-lg-3.text-center
-                    h3.vertical-center Assists
+                    h6.vertical-center Steals
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Fouls
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedFouls
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedFouls
+
+                .col-lg-3.text-center
+                    h6.vertical-center Fouls
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center Assist/Turnover
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedAssistTurnoverRatio
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedAssistTurnoverRatio
+
+                .col-lg-3.text-center
+                    h6.vertical-center Assist/Turnover
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center 3PT %
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedThreePtPercentage
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedThreePtPercentage
+
+                .col-lg-3.text-center
+                    h6.vertical-center 3PT %
+
+            .row
+                .col-lg-3.text-center
+                    h6.vertical-center FT %
+                
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.firstTeamPrediction.predictedFreeThrowPercentage
+
+                .col-lg-2.text-center
+                    // h1.h-100.padding-top-20-perc -
+                    h1.vertical-center -
+
+                .col-lg-2.text-center
+                    h4.vertical-center()=data.secondTeamPrediction.predictedFreeThrowPercentage
+
+                .col-lg-3.text-center
+                    h6.vertical-center FT %
+
+ 
+
+
         //-   .tab-pane.fade.show.active#upcoming(
         //-     role="tabpanel"
         //-     aria-labelledby="upcoming_tab"

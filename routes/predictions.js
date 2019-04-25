@@ -49,24 +49,25 @@ router.get("/:id", function(req, res) {
           res.render('predictions/index', { data: undefined});
         } else {
             let date = firstTeamLatestPrediction["date"];
-            const futureGame = dates.isDateNowOrLater(date);            
+            futureGame = dates.isDateNowOrLater(date);            
             const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
 
-            console.log(firstTeamLatestPrediction)
-            console.log(futureGame)          
-            if(futureGame) {
-                console.log("Here")
+            futureGame = true;
+            if(futureGame) {                
                 Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
                     docs[0].predictions.forEach(opponentPrediction => {
                         if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
+                            
+                            firstTeamLatestPrediction.predictedAssistTurnoverRatio = firstTeamLatestPrediction.predictedAssistTurnoverRatio.toFixed(2);
+                            opponentPrediction.predictedAssistTurnoverRatio = opponentPrediction.predictedAssistTurnoverRatio.toFixed(2);                            
+                            
                             const data = {
                                 firstTeamPrediction: firstTeamLatestPrediction, 
                                 secondTeamPrediction: opponentPrediction,
                                 team: team,
                                 opponentTeam: opponentTeam
-                            }                                     
-                            console.log(opponentPrediction)
-                            res.render('predictions/index', data);
+                            }
+                            res.render('predictions/index', {data});
                         }
                     });
                 });
