@@ -512,40 +512,42 @@ const teams = {
 };
 
 const teamIds = {
-  "hawks": 1610612737,
-  "celtics": 1610612738,
-  "nets": 1610612751,
-  "hornets": 1610612766,
-  "bulls": 1610612741,
-  "cavaliers": 1610612739,
-  "mavericks": 1610612742,
-  "nuggets": 1610612743,
-  "pistons": 1610612765,
-  "warriors": 1610612744,
-  "rockets": 1610612745,
-  "pacers": 1610612754,
-  "clippers": 1610612746,
-  "lakers": 1610612747,
-  "grizzlies": 1610612763,
-  "heat": 1610612748,
-  "bucks": 1610612749,
-  "timberwolves": 1610612750,
-  "pelicans": 1610612740,
-  "knicks": 1610612752,
-  "thunder": 1610612760,
-  "magic": 1610612753,
+  "Hawks": 1610612737,
+  "Celtics": 1610612738,
+  "Nets": 1610612751,
+  "Hornets": 1610612766,
+  "Bulls": 1610612741,
+  "Cavaliers": 1610612739,
+  "Mavericks": 1610612742,
+  "Nuggets": 1610612743,
+  "Pistons": 1610612765,
+  "Warriors": 1610612744,
+  "Rockets": 1610612745,
+  "Pacers": 1610612754,
+  "Clippers": 1610612746,
+  "Lakers": 1610612747,
+  "Grizzlies": 1610612763,
+  "Heat": 1610612748,
+  "Bucks": 1610612749,
+  "Timberwolves": 1610612750,
+  "Pelicans": 1610612740,
+  "Knicks": 1610612752,
+  "Thunder": 1610612760,
+  "Magic": 1610612753,
   "76ers": 1610612755,
-  "suns": 1610612756,
-  "blazers": 1610612757,
-  "kings": 1610612758,
-  "spurs": 1610612759,
-  "raptors": 1610612761,
-  "jazz": 1610612762,
-  "wizards": 1610612764,
+  "Suns": 1610612756,
+  "Blazers": 1610612757,
+  "Kings": 1610612758,
+  "Spurs": 1610612759,
+  "Raptors": 1610612761,
+  "Jazz": 1610612762,
+  "Wizards": 1610612764,
 }
 
 function getTeamId(routeName) {
-  return teamIds[routeName.toLowerCase()];
+  routeName = routeName.toLowerCase();
+  routeName = routeName.charAt(0).toUpperCase() + routeName.slice(1);
+  return teamIds[routeName];
 }
 
 
