@@ -7,6 +7,8 @@ var express = require("express"),
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
+const dates = require('../common/date');
+
 // connection URL
 const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
 
@@ -32,9 +34,15 @@ router.get("/", function(req, res) {
     client.connect(function(err, db) {
       const dbase = client.db(dbName);
       Database.getPredictions(dbase, team_predictions, function(docs) {
-        console.log(docs[0].predictions[0].homeGame);
-        console.log(docs[0]._id);
-        res.render('index', { data: docs});
+        let predictions = [];
+        docs.forEach(function(doc) {
+          const prediction = doc.predictions[doc.predictions.length-1];
+          const date = prediction["date"];
+          if(dates.isDateNowOrLater(date)) {
+            prediction.push(prediction);
+          }
+        });
+        res.render('index', { predictions: predictions});
       });
     });
 });

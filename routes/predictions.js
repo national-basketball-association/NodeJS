@@ -19,6 +19,10 @@ const team_predictions = "TEAM_PREDICTIONS";
 //Teams meta Database
 const teams = require('../common/teams');
 
+
+//helper date functions
+const dates = require('../common/date')
+
 // connect options
 var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
@@ -45,42 +49,25 @@ router.get("/:id", function(req, res) {
           res.render('predictions/index', { data: undefined});
         } else {
             let date = firstTeamLatestPrediction["date"];
-            date = date.split('-').join('');
-            date = parseInt(date);
-
-            let now = new Date().toISOString().slice(0,10);
-            now = now.split('-').join('');
-            now = parseInt(now);
-            
-            console.log("Info: ")
-            console.log(firstTeamLatestPrediction)
-
+            const futureGame = dates.isDateNowOrLater(date);
             const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
-            console.log(firstTeamLatestPrediction.opponentId)
-
-            Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
-                flag = 0;
-                docs[0].predictions.forEach(opponentPrediction => {
-                    if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
-
-                        
-                        console.log(opponentPrediction)
-
-                        const data = {
-                            firstTeamPrediction: firstTeamLatestPrediction, 
-                            secondTeamPrediction: opponentPrediction,
-                            team: team,
-                            opponentTeam: opponentTeam
+            if(futureGame) {
+                Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
+                    docs[0].predictions.forEach(opponentPrediction => {
+                        if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
+                            const data = {
+                                firstTeamPrediction: firstTeamLatestPrediction, 
+                                secondTeamPrediction: opponentPrediction,
+                                team: team,
+                                opponentTeam: opponentTeam
+                            }
+                            res.render('predictions/index', data);
                         }
-                        res.render('predictions/index', data);
-                        flag = 1;
-                    }
+                    });
                 });
-
-                if (flag == 0) {
-                    res.render('predictions/index', { data: undefined});
-                }
-            });
+            } else {
+                res.render('predictions/index', { data: undefined });
+            }
         }
       });
     });
