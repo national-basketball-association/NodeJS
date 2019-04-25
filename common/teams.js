@@ -577,5 +577,4 @@ function getImage(id) {
   return team['imgUrl'];
 }
 
-
 module.exports = {getTeamId, getTeamById, getMainColor, getSecondaryColor, getImage};

@@ -1,13 +1,20 @@
 
 //checks if a date was today or in the future
-function isDateNowOrLater(date) {
-	date = date.split('-').join('');
+function isDateNowOrLater(date) {    
+    date = date.split('-').join('');
 	date = parseInt(date);
 
-	let now = new Date().toISOString().slice(0,10); 
-	now = now.split('-').join('');
-	now = parseInt(now);
+    let now = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});
+    
+    now = now.split(",")[0];
+    now = now.split("/");
 
+    let day = (now[0].length == 1) ? '0' + now[0] : now[0];
+    let month = (now[1].length == 1) ? '0' + now[1] : now[1];
+    let year = now[2];
+    now = year + day + month;
+    console.log(now);
+    console.log(date);
 	return now <= date
 }
 
