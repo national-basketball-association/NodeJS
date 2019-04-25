@@ -548,7 +548,7 @@ function getTeamId(routeName) {
   return teamIds[routeName.toLowerCase()];
 }
 function getTeamById(id) {
-  const team = teams[id]; //does a deep copy
+  const team = Object.create(teams[id]); //does a deep copy
   if(!team)
     throw "teamId is not found!";
   const mainColor = team["mainColor"];

@@ -19,6 +19,10 @@ const team_predictions = "TEAM_PREDICTIONS";
 //Teams meta Database
 const teams = require('../common/teams');
 
+
+//helper date functions
+const dates = require('../common/date')
+
 // connect options
 var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
@@ -45,16 +49,12 @@ router.get("/:id", function(req, res) {
           res.render('predictions/index', { data: undefined});
         } else {
           let date = latestPrediction["date"];
-          date = date.split('-').join('');
-          date = parseInt(date);
 
-          let now = new Date().toISOString().slice(0,10);
-          now = now.split('-').join('');
-          now = parseInt(now);
 
+          const futureGame = dates.isDateNowOrLater(date);
           const opponentTeam = teams.getTeamById(latestPrediction["opponentId"]);
           const data = {
-            data: latestPrediction, //(now <= date) ? latestPrediction : undefined,
+            data: (futureGame) ? latestPrediction : undefined,
             team: team,
             opponentTeam: opponentTeam
           }
