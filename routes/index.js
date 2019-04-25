@@ -36,11 +36,11 @@ router.get("/", function(req, res) {
       Database.getPredictions(dbase, team_predictions, function(docs) {
         let predictions = [];
         docs.forEach(function(doc) {
-          const prediction = doc.predictions[doc.predictions.length-1];
-          const date = prediction["date"];
-          if(dates.isDateNowOrLater(date)) {
-            prediction.push(prediction);
-          }
+            const prediction = doc.predictions[doc.predictions.length-1];
+            const date = prediction["date"];
+            if(dates.isDateNowOrLater(date)) {
+                predictions.push(prediction);
+            }
         });
         res.render('index', { predictions: predictions});
       });
