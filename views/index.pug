@@ -13,7 +13,11 @@ html
     link(
       rel="stylesheet", 
       href="./stylesheets/css/mycss.css"
-    )    
+    )
+    link(
+      rel="stylesheet"
+      href="./stylesheets/css/video.css"
+    )
     link(
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
@@ -61,6 +65,9 @@ html
 
     // Masthead Section
     header#header.masthead
+      .overlay
+      video(playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop")
+        source(src="https://giant.gfycat.com/ThunderousAppropriateInvisiblerail.webm" type="video/mp4")
       .container.h-100
         .row.h-100.align-items-center.justify-content-center.text-center
           .col-lg-10.align-self-end
