@@ -120,7 +120,7 @@ header.masthead-page h1 {
 }
 
 .team-logo-main {
-  height: 60px;
+  height: 100px;
   width: auto;
   margin: 5px;
 }
@@ -133,6 +133,10 @@ header.masthead-page h1 {
 
 .padding-top-12 {
   padding-top: 12px;
+}
+
+.padding-top-20-perc {
+    padding-top: 20%;
 }
 
 .padding-top-50-perc {
@@ -171,6 +175,18 @@ header.masthead-page h1 {
   margin-top: 30px;
 }
 
+/* DISPLAYS */
+
+.display-block {
+    display: block;
+    margin: auto;
+}
+
+.vertical-center {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
 
 /* HARD DIMENSIONS */
 

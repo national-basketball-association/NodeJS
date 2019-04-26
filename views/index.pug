@@ -13,7 +13,11 @@ html
     link(
       rel="stylesheet", 
       href="./stylesheets/css/mycss.css"
-    )    
+    )
+    link(
+      rel="stylesheet"
+      href="./stylesheets/css/video.css"
+    )
     link(
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
@@ -61,6 +65,9 @@ html
 
     // Masthead Section
     header#header.masthead
+      .overlay
+      video(playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop")
+        source(src=""+videoUrl type="video/mp4")
       .container.h-100
         .row.h-100.align-items-center.justify-content-center.text-center
           .col-lg-10.align-self-end
@@ -95,13 +102,12 @@ html
                 | also provides accurate stat and game predictions.
     
     // Upcoming games section
-    section#upcoming_games.page-section      
+    section#upcoming_games.page-section
       .container.h-25.hard-w-600.bkgrd-blue.rounded-top
         .row
           .col-lg-6
             h6.text-uppercase.font-white.my-4.mx-4(style="margin-bottom: 2rem !important")
               | Games
-        
         .row
           .col-lg-12.padding-left-0.padding-right-0
             ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
@@ -114,153 +120,99 @@ html
                   aria-selected="true"
                 ) Upcoming game predictions            
               li.nav-item.font-white
-                a.nav-link.color-white-link#previous_games(
+                a.nav-link.color-white-link#betting_odds(
                   data-toggle="tab"
-                  href="#previous"
+                  href="#betting"
                   role="tab"
-                  aria-controls="previous-tab"
+                  aria-controls="betting-tab"
                   aria-selected="true"
-                ) Previous games              
+                ) Betting Odds              
                                   
       .container.h-75.border.hard-w-600.tab-content#myTabContent
         .tab-pane.fade.show.active#upcoming(
           role="tabpanel"
           aria-labelledby="upcoming_tab"
         )
-          .row.hard-h-100.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
-            .col-lg-6(style="padding-right: 0px; padding-left: 0px")
-              form(action="/predictions/warriors", method="get")
-                button.btn.btn-block.border-right
-                  .row
-                    .col-lg-8.border-right(style="text-align: left;")
+          - var i = 0
+          while i < predictions.length
+            - var prediction = predictions[i];
+            .row.hard-h-100.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+              .col-lg-6(style="padding-right: 0px; padding-left: 0px")
+                form(action="/predictions/" + prediction["route"], method="get")
+                  button.btn.btn-block.border-right
+                    .row
+                      .col-lg-8.border-right(style="text-align: left;")
+                        .row
+                          .col-lg-3 
+                            img.rounded.float-left.team-logo-icon(
+                              src=prediction["imgUrl"]
+                            )
+                          .col-lg-9.padding-top-12.padding-left-10.name-font
+                            =prediction["route"]
+                        .row
+                          .col-lg-3
+                            img.rounded.float-left.team-logo-icon(
+                                src=prediction["opponentImgUrl"]
+                            )
+                          .col-lg-9.padding-top-12.padding-left-10.name-font
+                            =prediction["opponentRoute"]
+                      .col-lg-4(style="padding-top: 1rem")
+                        span.align-text-bottom.font-weight-bold.small-font.name-font
+                         ="Winner: "+(prediction["winPrediction"] ? prediction["route"] : prediction["opponentRoute"])
+              if i+1 < predictions.length
+                - prediction = predictions[i+1]
+                .col-lg-6(style="padding-right: 0px; padding-left: 0px")
+                  form(action="/predictions/"+ prediction["route"], method="get")
+                    button.btn.btn-block.border-right
                       .row
-                        .col-lg-3
-                          img.rounded.float-left.team-logo-icon(
-                            src="https://worldsportlogos.com/wp-content/uploads/2018/03/Orlando-Magic-logo.png"                            
-                          )
-                        .col-lg-9.padding-top-12.padding-left-10.name-font
-                            | Warriors
-                      .row
-                        .col-lg-3
-                          img.rounded.float-left.team-logo-icon(
-                              src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/New_Orleans_Pelicans_logo.svg/1200px-New_Orleans_Pelicans_logo.svg.png"                              
-                          )
-                        .col-lg-9.padding-top-12.padding-left-10.name-font
-                          | Celtics                                                                      
-                    .col-lg-4(style="padding-top: 1rem")
-                      span.align-text-bottom.font-weight-bold.small-font.name-font Winner: Cavaliers            
-        .tab-pane.fade#previous(
+                        .col-lg-8.border-right(style="text-align: left;")
+                          .row
+                            .col-lg-3
+                              img.rounded.float-left.team-logo-icon(
+                                src=prediction["imgUrl"]
+                              )
+                            .col-lg-9.padding-top-12.padding-left-10.name-font
+                                =prediction["route"]
+                          .row
+                            .col-lg-3
+                              img.rounded.float-left.team-logo-icon(
+                                  src=prediction["opponentImgUrl"]                              
+                              )
+                            .col-lg-9.padding-top-12.padding-left-10.name-font
+                              =prediction["opponentRoute"]                                              
+                        .col-lg-4(style="padding-top: 1rem")
+                          span.align-text-bottom.font-weight-bold.small-font.name-font
+                            ="Winner: "+(prediction["winPrediction"] ? prediction["route"] : prediction["opponentRoute"])  
+            - i = i + 2;
+
+        .tab-pane.fade#betting(
           role="tabpanel"
-          aria-labelledby="previous_games"
+          aria-labelledby="betting_odds"
         )
-          .row
-            .col
-              p Nonsense               
-        
-      //- .container.h-75.border.w-50
-      //-   .tab-content#tab_content
-      //-     .tab-pane.fade.show.active#upcoming(
-      //-       role="tabpanel"
-      //-       aria-labelledby="upcoming_tab"
-      //-     )
-      //-       .col-lg-6
-      //-         p nonsense    
-      //-     .tab-pane.fade#previous(
-      //-       role="tabpanel"
-      //-       aria-labelledby="previous_games"
-      //-     ) Other content
-
-        //- <div class="tab-pane fade show active" 
-        //- id="home" role="tabpanel" 
-        //- aria-labelledby="home-tab">
-        //- ...
-        //- </div>
-
-        //- <div class="tab-pane fade" 
-        //- id="profile" 
-        //- role="tabpanel" 
-        //- aria-labelledby="profile-tab">...</div>
-          
-          //- - var n = 0
-          //- - var count = 0
-          //- while n < 3
-          //-   .col-lg-4.align-self-end
-          //-     .card.align-items-center(style='width: 18rem;')
-          //-       .card-body
-          //-         h5.card-title=data[count].predictions[0].opponentFullName + " vs " + data[count].full_name
-          //-         if data[count].predictions[0].winPrediction==true
-          //-           h6.card-subtitle.mb-2.text-muted="winner: " + data[count].full_name
-          //-         else
-          //-           h6.card-subtitle.mb-2.text-muted="winner: " + data[count].predictions[0].opponentFullName
-                  
-          //-         p.card-text
-          //-         table.table
-          //-           thead
-          //-             tr
-          //-                 th(scope='col')
-          //-                 th(scope='col')=data[count].full_name
-          //-                 th(scope='col')=data[count].predictions[0].opponentFullName
-          //-           tbody
-          //-             tr
-          //-                 th(scope='row') Assists
-          //-                 td=data[count].predictions[0].predictedAssists
-          //-                 td=data[count].predictions[0].predictedAssists - 4
-          //-             tr
-          //-                 th(scope='row') Turnovers
-          //-                 td=data[count].predictions[0].predictedTurnovers
-          //-                 td=data[count].predictions[0].predictedTurnovers - 3
-          //-         p
-          //-         - var get_route = "/box/?id1=" + data[count]._id + "&id2=" + data[count].predictions[0].opponentId
-          //-         form(action=get_route, method="get")
-          //-           a.card-link(href=get_route) Box Score
-          //-   - n++
-          //-   - count++
-          //-   - count++
-
-          
-
-      //- .container.h-100.border
-      //-   .row.h-25.align-items-center.justify-content-center.text-center
-      //-     .col-lg-10.align-self-end
-      //-       h1.text-uppercase.font-weight-bold
-      //-         | Upcoming Games
-      //-       hr.my-4
-      //-   .row.h-75.align-items-center.justify-content-center.text-center.my-4.py-4
-      //-     - var n = 0
-      //-     - var count = 0
-      //-     while n < 3
-      //-       .col-lg-4.align-self-end
-      //-         .card.align-items-center(style='width: 18rem;')
-      //-           .card-body
-      //-             h5.card-title=data[count].predictions[0].opponentFullName + " vs " + data[count].full_name                   
-      //-             if data[count].predictions[0].winPrediction==true
-      //-               h6.card-subtitle.mb-2.text-muted="winner: " + data[count].full_name
-      //-             else
-      //-               h6.card-subtitle.mb-2.text-muted="winner: " + data[count].predictions[0].opponentFullName
-                  
-      //-             p.card-text
-      //-             table.table
-      //-               thead
-      //-                 tr
-      //-                     th(scope='col')
-      //-                     th(scope='col')=data[count].full_name
-      //-                     th(scope='col')=data[count].predictions[0].opponentFullName
-      //-               tbody
-      //-                 tr
-      //-                     th(scope='row') Assists
-      //-                     td=data[count].predictions[0].predictedAssists
-      //-                     td=data[count].predictions[0].predictedAssists - 4
-      //-                 tr
-      //-                     th(scope='row') Turnovers
-      //-                     td=data[count].predictions[0].predictedTurnovers
-      //-                     td=data[count].predictions[0].predictedTurnovers - 3
-      //-             p
-      //-             - var get_route = "/box/?id1=" + data[count]._id + "&id2=" + data[count].predictions[0].opponentId 
-      //-             form(action=get_route, method="get")
-      //-               a.card-link(href=get_route) Box Score
-      //-       - n++
-      //-       - count++
-      //-       - count++                 
+          each odd in odds
+            .row(style="padding: 1rem")
+              .col-lg-4(style="padding-right: 0px; padding-left: 0px")
+                .row
+                  .col-lg-8.border-right(style="text-align: left;")
+                    .row
+                      .col-lg-3
+                        img.rounded.float-left.team-logo-icon(
+                          src=odd["team1ImgUrl"]
+                        )
+                      .col-lg-9.padding-top-12.padding-left-10.name-font
+                          =odd["team1Route"]
+                    .row
+                      .col-lg-3
+                        img.rounded.float-left.team-logo-icon(
+                            src=odd["team2ImgUrl"]                      
+                        )
+                      .col-lg-9.padding-top-12.padding-left-10.name-font
+                        =odd["team2Route"]
+              .col-lg-6(style="padding-right: 0px; padding-left: 0px")
+                .padding-top-12.padding-left-10.name-font(style="padding-top: 13px; padding-bottom: 4px")
+                    =odd["val1"]
+                .padding-top-12.padding-left-10.name-font(style="padding-top: 13px; padding-bottom: 4px")
+                    =odd["val2"]
 
     //Teams section
     section#teams.page-section

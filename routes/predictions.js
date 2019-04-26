@@ -16,6 +16,13 @@ const dbName = 'NPS';
 // Collection names relevant to teams
 const team_predictions = "TEAM_PREDICTIONS";
 
+//Teams meta Database
+const teams = require('../common/teams');
+
+
+//helper date functions
+const dates = require('../common/date')
+
 // connect options
 var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
@@ -31,10 +38,48 @@ const client = new MongoClient(uri, options);
 router.get("/:id", function(req, res) {
     client.connect(function(err, db) {
       const dbase = client.db(dbName);
-      Database.getPredictions(dbase, team_predictions, function(docs) {
-        console.log(docs[0].predictions[0].homeGame);
-        console.log(docs[0]._id);
-        res.render('predictions/index', { data: docs});
+      const teamId = teams.getTeamId(req.params.id);
+      if(!teamId) {
+        throw "team is not found";
+      }
+      Database.getTeamPredictions(dbase, team_predictions, teamId, function(docs) {
+        const team = teams.getTeamById(teamId);
+        const firstTeamLatestPrediction = docs[0].predictions[docs[0].predictions.length-1];
+        if(!firstTeamLatestPrediction) {
+          res.render('predictions/index', { data: undefined});
+        } else {
+            console.log("in else")
+            let date = firstTeamLatestPrediction["date"];
+            futureGame = dates.isDateNowOrLater(date);
+            const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
+            
+            if(futureGame) {     
+                console.log("In futuregame");           
+                Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
+                    console.log("in db");
+                    docs[0].predictions.forEach(opponentPrediction => {
+                        console.log("in loop");
+                        console.log(opponentPrediction.date)
+                        if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
+
+                            firstTeamLatestPrediction.predictedAssistTurnoverRatio = firstTeamLatestPrediction.predictedAssistTurnoverRatio.toFixed(2);
+                            opponentPrediction.predictedAssistTurnoverRatio = opponentPrediction.predictedAssistTurnoverRatio.toFixed(2);                                                   
+
+                            const data = {                                
+                                firstTeamPrediction: firstTeamLatestPrediction,                         
+                                secondTeamPrediction: opponentPrediction,
+                                team: team,
+                                opponentTeam: opponentTeam
+                            }
+                            res.render('predictions/index', {data});                            
+                        }
+                    });
+                });
+            } else {            
+                console.log("in the final else");
+                res.render('predictions/index', { data: undefined });
+            }
+        }
       });
     });
 });
