@@ -68,5 +68,13 @@ module.exports = {
       assert.equal(err, null);
       callback(docs);
     })
+  },
+
+  getBettingOdds: function(db, collectionName, callback) {
+    const collection = db.collection(collectionName);
+    collection.find({}).toArray(function(err, docs) {
+      assert.equal(err, null);
+      callback(docs);
+    })
   }
 };

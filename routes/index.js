@@ -8,8 +8,9 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 const dates = require('../common/date');
-
 const teams = require('../common/teams');
+const betting = require('../common/betting');
+
 
 // connection URL
 const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
@@ -17,8 +18,9 @@ const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/te
 // Database name
 const dbName = 'NPS';
 
-// Collection names relevant to teams
+// Collection names relevant to teams / betting odds
 const team_predictions = "TEAM_PREDICTIONS";
+const betting_odds = "BETTING_ODDS";
 
 // connect options
 var options = {
@@ -54,14 +56,35 @@ router.get("/", function(req, res) {
 
           const date = prediction["date"];
           if(!set[arr]) {
-            if(dates.isDateNowOrLater(date)) { //DELETE OR TRUE
+            if(dates.isDateNowOrLater(date)) {
               set[arr] = true;
               predictions.push(prediction);
             }
           }
-          
         });
-        res.render('index', { predictions: predictions});
+        betting.getBettingOdds(client, function(odds) {
+          let bettingGames = [];
+          odds.forEach(function(odd) {
+            let game = {};
+            let team1 = odd["team1"];
+            let team2 = odd["team2"];
+
+            const team1Id = teams.getIdFromFullName(team1);
+            const team2Id = teams.getIdFromFullName(team2);
+            game["team1Id"] = team1Id;
+            game["team2Id"] = team2Id;
+            game["team1ImgUrl"] = teams.getImage(team1Id);
+            game["team2ImgUrl"] = teams.getImage(team2Id);
+            game["team1Route"] = teams.getRouteName(team1Id);
+            game["team2Route"] = teams.getRouteName(team2Id);
+            
+            game["val1"] = (odd["val1"] >= 0) ? "+"+odd["val1"] : odd["val1"];
+            game["val2"] = (odd["val2"] >= 0) ? "+"+odd["val2"] : odd["val2"];
+            bettingGames.push(game);
+
+          });
+          res.render('index', { predictions: predictions, odds: bettingGames});
+        });        
       });
     });
 });
