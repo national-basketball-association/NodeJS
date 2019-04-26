@@ -3,7 +3,7 @@ var assert = require('assert');
 // routes
 var express = require("express"),
     router = express.Router();
-    Database = require('./functions/mongoFunctions');
+    Database = require('../functions/mongoFunctions');
 
 // MONGODB
 const MongoClient = require('mongodb').MongoClient;
