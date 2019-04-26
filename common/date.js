@@ -1,5 +1,6 @@
 
 //checks if a date was today or in the future
+//ex input 2019-03-29
 function isDateNowOrLater(date) {    
     date = date.split('-').join('');
 	date = parseInt(date);
