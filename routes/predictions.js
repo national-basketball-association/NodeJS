@@ -56,9 +56,8 @@ router.get("/:id", function(req, res) {
                 Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
                     docs[0].predictions.forEach(opponentPrediction => {
                         if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
-
-                            firstTeamLatestPrediction.predictedAssistTurnoverRatio = firstTeamLatestPrediction.predictedAssistTurnoverRatio.toFixed(2);
-                            opponentPrediction.predictedAssistTurnoverRatio = opponentPrediction.predictedAssistTurnoverRatio.toFixed(2);                                                   
+                            firstTeamLatestPrediction.predictedAssistTurnoverRatio = Math.round(firstTeamLatestPrediction.predictedAssistTurnoverRatio * 100) / 100;
+                            opponentPrediction.predictedAssistTurnoverRatio = Math.round(opponentPrediction.predictedAssistTurnoverRatio*100) / 100;
 
                             const data = {                                
                                 firstTeamPrediction: firstTeamLatestPrediction,                         
