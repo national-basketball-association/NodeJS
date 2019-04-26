@@ -48,18 +48,13 @@ router.get("/:id", function(req, res) {
         if(!firstTeamLatestPrediction) {
           res.render('predictions/index', { data: undefined});
         } else {
-            console.log("in else")
             let date = firstTeamLatestPrediction["date"];
             futureGame = dates.isDateNowOrLater(date);
             const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
             
             if(futureGame) {     
-                console.log("In futuregame");           
                 Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
-                    console.log("in db");
                     docs[0].predictions.forEach(opponentPrediction => {
-                        console.log("in loop");
-                        console.log(opponentPrediction.date)
                         if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
 
                             firstTeamLatestPrediction.predictedAssistTurnoverRatio = firstTeamLatestPrediction.predictedAssistTurnoverRatio.toFixed(2);
@@ -76,7 +71,6 @@ router.get("/:id", function(req, res) {
                     });
                 });
             } else {            
-                console.log("in the final else");
                 res.render('predictions/index', { data: undefined });
             }
         }
