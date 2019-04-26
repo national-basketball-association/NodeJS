@@ -35,7 +35,7 @@ const client = new MongoClient(uri, options);
 
 // team specific route
 router.get("/:id", function(req, res) {
-    
+
     /* 
         send:
             - Box scores
@@ -47,48 +47,72 @@ router.get("/:id", function(req, res) {
     */
     client.connect(function(err, db) {
       const dbase = client.db(dbName);
-      
-      Database.findByTeamName(dbase, team_stats, req.params.id, function(docs) {
-        console.log(docs)
 
-        Database.getPlayers(dbase, player_stats, function(players) {
-            curr_team_id = docs[0]._id            
-            playersArr = {};
-            i = 0;
 
-            players.forEach(playerInfo => {
-                if (playerInfo.seasons[0].TEAM_ID == curr_team_id) {                    
-                    playersArr[i] = playerInfo.seasons
-                    i += 1;
-                }
-            });
-            
-            Database.getTeamPredictions(dbase, team_predictions, curr_team_id, function(predicts) {                                
-                // check if date is today
-                latestPrediction = predicts[0].predictions[predicts[0].predictions.length - 1];                
-                
-                todayPredictions = Dates.isDateNow(latestPrediction.date);
-                if (!todayPredictions) {
-                    latestPrediction = {};
-                }
+        Database.findByTeamName(dbase, team_stats, req.params.id, function(docs) {
+            console.log(docs);
 
-                Database.getSingleTeamBoxScores(dbase, box_scores, curr_team_id, function(boxScores) {
-                    // console.log(boxScores[0].games[boxScores[0].games.length - 1]);
-                    lastGameBoxScore = boxScores[0].games[boxScores[0].games.length - 1];
-                    team = Teams.getTeamById(curr_team_id);
-                    res.render('teams/index', 
-                    { 
-                        predictions: latestPrediction,
-                        team_id: docs[0]._id,
-                        team_city: docs[0].teamCity, 
-                        team_name: docs[0].teamName,
-                        years: docs[0].years,
-                        players_stats: playersArr,
-                        lastGameBoxScore: lastGameBoxScore,
-                        team: team
+
+            Database.getPlayers(dbase, player_stats, function(players) {
+                curr_team_id = docs[0]._id
+                team = Teams.getTeamById(curr_team_id);
+                playersArr = {};
+                var i = 0;
+
+                players.forEach(playerInfo => {
+                    if (playerInfo.seasons[playerInfo.seasons.length - 1].TEAM_ID == curr_team_id) {
+                        if (playerInfo.playerName != "" && playerInfo.playerName != undefined) {
+                            data = {
+                                full_name: playerInfo.playerName,
+                                f_name: playerInfo.f_name,
+                                l_name: playerInfo.l_name,
+                                latest_season: playerInfo.seasons[playerInfo.seasons.length - 1]
+                            }
+                            playersArr[i] = data
+                            i += 1;
+                        }
+                    }
+                });
+
+                Database.getTeamPredictions(dbase, team_predictions, curr_team_id, function(predicts) {
+                    // check if date is today
+                    latestPrediction = predicts[0].predictions[predicts[0].predictions.length - 1];
+
+                    todayPredictions = Dates.isDateNow(latestPrediction.date);
+                    if (!todayPredictions) {
+                        latestPrediction = {};
+                    } else {
+                        opponentTeam = Teams.getTeamById(latestPrediction.opponentId);
+                        team_route = Teams.getRouteName(curr_team_id);
+                        Prediction = {
+                            imgUrl: team.imgUrl,
+                            opponentImgUrl: opponentTeam.imgUrl,
+                            route: team_route,
+                            opponentRoute: Teams.getRouteName(latestPrediction.opponentId),
+                            fullName: Teams.getFullName(curr_team_id)
+                        }
+                    }
+
+
+                    Database.getSingleTeamBoxScores(dbase, box_scores, curr_team_id, function(boxScores) {
+                     //    console.log(boxScores[0].games[boxScores[0].games.length - 1]);
+                       // console.log(playersArr[0].latest_season.TEAM_ID);
+                        lastGameBoxScore = boxScores[0].games[boxScores[0].games.length - 1];
+                        console.log(latestPrediction);
+                        res.render('teams/index',
+                        {
+                            predictions: Prediction,
+                            team_id: docs[0]._id,
+                            team_city: docs[0].teamCity,
+                            team_name: docs[0].teamName,
+                            years: docs[0].years,
+                            players_stats: playersArr,
+                            lastGameBoxScore: lastGameBoxScore,
+                            team: team,
+                            imgUrl: Teams.getImage(curr_team_id)
+                        });
                     });
                 });
-            });              
         });
       });
     });  
