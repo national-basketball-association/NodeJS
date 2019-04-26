@@ -53,6 +53,16 @@ module.exports = {
     });
   },
 
+    getSingleTeamBoxScores: function(db, collectionName, id1, callback) {
+        const collection = db.collection(collectionName);
+
+        collection.find({"_id" : id1}).toArray(function(err, docs) {
+            assert.equal(err, null);
+
+            callback(docs);
+        })
+    },
+
   getPredictions: function(db, collectionName, callback) {
     const collection = db.collection(collectionName);
     collection.find({}).toArray(function(err, docs) {
