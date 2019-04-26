@@ -20,7 +20,6 @@ module.exports = {
 
     // Find specific documents
     collection.find({"teamName" : teamName}).toArray(function(err, docs) {
-      assert.equal(err, null);
       console.log("Found records");
 
       callback(docs);
@@ -32,7 +31,6 @@ module.exports = {
 
     // Get all players
     collection.find({}).toArray(function(err, docs) {
-      assert.equal(err, null);
       console.log("Found records");
 
       callback(docs);
