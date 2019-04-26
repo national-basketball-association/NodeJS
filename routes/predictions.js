@@ -21,7 +21,7 @@ const teams = require('../common/teams');
 
 
 //helper date functions
-const dates = require('../common/date')
+const dates = require('../common/date');
 
 // connect options
 var options = {
@@ -47,29 +47,30 @@ router.get("/:id", function(req, res) {
         const firstTeamLatestPrediction = docs[0].predictions[docs[0].predictions.length-1];
         if(!firstTeamLatestPrediction) {
           res.render('predictions/index', { data: undefined});
-        } else {
+        } else {         
             let date = firstTeamLatestPrediction["date"];
             futureGame = dates.isDateNowOrLater(date);
             const opponentTeam = teams.getTeamById(firstTeamLatestPrediction["opponentId"]);
             
-            if(futureGame) {     
-                Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {
-                    docs[0].predictions.forEach(opponentPrediction => {
+            if(futureGame) {                     
+                Database.getTeamPredictions(dbase, team_predictions, firstTeamLatestPrediction.opponentId, function(docs) {                    
+                    docs[0].predictions.forEach(opponentPrediction => {                        
                         if(opponentPrediction["date"] == firstTeamLatestPrediction["date"]) {
+
                             firstTeamLatestPrediction.predictedAssistTurnoverRatio = Math.round(firstTeamLatestPrediction.predictedAssistTurnoverRatio * 100) / 100;
-                            opponentPrediction.predictedAssistTurnoverRatio = Math.round(opponentPrediction.predictedAssistTurnoverRatio*100) / 100;
+                            opponentPrediction.predictedAssistTurnoverRatio = Math.round(opponentPrediction.predictedAssistTurnoverRatio  * 100) / 100;
 
                             const data = {                                
                                 firstTeamPrediction: firstTeamLatestPrediction,                         
                                 secondTeamPrediction: opponentPrediction,
                                 team: team,
                                 opponentTeam: opponentTeam
-                            }
+                            };
                             res.render('predictions/index', {data});                            
                         }
-                    });
-                });
-            } else {            
+                })
+                });;
+            } else {                            
                 res.render('predictions/index', { data: undefined });
             }
         }
@@ -79,4 +80,4 @@ router.get("/:id", function(req, res) {
 
 client.close();
 
-module.exports = router
+module.exports = router;

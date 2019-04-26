@@ -8,7 +8,7 @@ module.exports = {
     // Find all documents
     collection.find({}).toArray(function(err, docs) {
       assert.equal(err, null);
-      console.log("Found the following records");
+      console.log("Found Documents");
       // console.log(docs);
       callback(docs);
       console.log("exited");
@@ -20,7 +20,7 @@ module.exports = {
 
     // Find specific documents
     collection.find({"teamName" : teamName}).toArray(function(err, docs) {
-      console.log("Found records");
+      console.log("Found Team");
 
       callback(docs);
     });
@@ -31,7 +31,7 @@ module.exports = {
 
     // Get all players
     collection.find({}).toArray(function(err, docs) {
-      console.log("Found records");
+      console.log("Found Players");
 
       callback(docs);
     });
@@ -50,6 +50,16 @@ module.exports = {
       })
     });
   },
+
+    getSingleTeamBoxScores: function(db, collectionName, id1, callback) {
+        const collection = db.collection(collectionName);
+
+        collection.find({"_id" : id1}).toArray(function(err, docs) {
+            assert.equal(err, null);
+
+            callback(docs);
+        })
+    },
 
   getPredictions: function(db, collectionName, callback) {
     const collection = db.collection(collectionName);

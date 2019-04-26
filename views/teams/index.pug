@@ -3,21 +3,21 @@ html
     head
         meta(charset="utf-8")
         meta(
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
         )
         link(
-            rel="stylesheet", 
-            href="../stylesheets/css/creative.css"
+        rel="stylesheet",
+        href="../stylesheets/css/creative.css"
         )
         link(
-            rel="stylesheet", 
-            href="../stylesheets/css/mycss.css"
-        )    
+        rel="stylesheet",
+        href="../stylesheets/css/mycss.css"
+        )
         link(
-            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
-            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
-            crossorigin="anonymous"
+        href="https://use.fontawesome.com/releases/v5.7.2/css/all.css",
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr",
+        crossorigin="anonymous"
         )
         title NPS
     body
@@ -26,36 +26,36 @@ html
                 form(action="/", method="get")
                     a(class="navbar-brand js-scroll-trigger", href="/") NPS
                 button(
-                    class="navbar-toggler navbar-toggler-right", 
-                    type="button", 
-                    data-toggle="collapse",
-                    data-target="#navbarResponsive",
-                    aria-controls="navbarResponsive",
-                    aria-expanded="false",
-                    aria-label="Toggle navigation",
+                class="navbar-toggler navbar-toggler-right",
+                type="button",
+                data-toggle="collapse",
+                data-target="#navbarResponsive",
+                aria-controls="navbarResponsive",
+                aria-expanded="false",
+                aria-label="Toggle navigation",
                 )
                     span(
-                        class='navbar-toggler-icon'
+                    class='navbar-toggler-icon'
                     )
                 div(
-                    class="collapse navbar-collapse",
-                    id="navbarResponsive"
+                class="collapse navbar-collapse",
+                id="navbarResponsive"
                 )
                     ul(class="navbar-nav ml-auto my-2 my-lg-0")
                         li(class="nav-item")
                             a(
-                                href="#predictions",
-                                class="nav-link js-scroll-trigger"
+                            href="#predictions",
+                            class="nav-link js-scroll-trigger"
                             ) Game Predictions
                         li(class="nav-item")
                             a(
-                                href="#team_stats"
-                                class="nav-link js-scroll-trigger"
+                            href="#team_stats"
+                            class="nav-link js-scroll-trigger"
                             ) Team Statistics
                         li(class="nav-item")
                             a(
-                                href="#player_stats"
-                                class="nav-link js-scroll-trigger"
+                            href="#player_stats"
+                            class="nav-link js-scroll-trigger"
                             ) Player Statistics
         //- Masthead Section
         header.masthead-page
@@ -68,13 +68,7 @@ html
                     .col-lg-8.align-self-baseline
                         p.text-white-75.font-weight-light.mb-5
                             | Game statistics and predictions.
-                .row.h-25.justify-content-center.text-center
-                    .col-lg-3.text-center
-                        a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#predictions') Game Predictions
-                    .col-lg-3.text-center
-                        a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#team_stats') Team Statistics
-                    .col-lg-3.text-center
-                        a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#player_stats') Player Statistics
+
 
 
         //- section#upcoming_games.page-section
@@ -85,7 +79,7 @@ html
         //-                     | gameses
         //-         .row
         //-             .col-lg-12.padding-left-0.padding-right-0
-        //-                 ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+        //-                 ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")
         //-                     li.nav-item.font-white
         //-                         a.nav-link.color-white-link.active#upcoming_tab(
         //-                         data-toggle="tab"
@@ -93,7 +87,7 @@ html
         //-                         role="tab"
         //-                         aria-controls="upcoming-tab"
         //-                         aria-selected="true"
-        //-                         ) Upcoming game predictions            
+        //-                         ) Upcoming game predictions
         //-                     li.nav-item.font-white
         //-                         a.nav-link.color-white-link#previous_games(
         //-                         data-toggle="tab"
@@ -101,21 +95,21 @@ html
         //-                         role="tab"
         //-                         aria-controls="previous-tab"
         //-                         aria-selected="true"
-        //-                         ) Previous games              
+        //-                         ) Previous games
 
-        section#upcoming_games.page-section        
+        section#upcoming_games.page-section
             .container.h-25.hard-w-700.border-top.border-right.border-left.rounded-top
                 .row
                     .col-lg-12
                         img.rounded.display-block.team-logo-main(
-                            src= "https://www.nba.com/assets/logos/teams/primary/web/UTA.svg"
+                        src=imgUrl
                         )
 
                 .row
                     .col-lg-12
                         h3.display-block.text-center
-                            span.badge.badge-dark UTAH JAZZ
-                    
+                            span.badge.badge-dark= team_name
+
                     //- .col-lg-7.margin-top-30
                     //-     h1.display-block.text-left.vertical-center
                     //-         span.badge.badge-dark UTAH JAZZ
@@ -123,202 +117,280 @@ html
                 .row
                     .col-lg-12
                         .my-4
-                
+
                 .row.bkgrd-white
                     .col-lg-12.padding-left-0.padding-right-0
-                        ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
+                        ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")
                             li.nav-item
                                 a.nav-link.color-black-link.active.font-black#team_tab(
-                                    data-toggle="tab"
-                                    href="#team"
-                                    role="tab"
-                                    aria-controls="team-tab"
-                                    aria-selected="true"
+                                data-toggle="tab"
+                                href="#team"
+                                role="tab"
+                                aria-controls="team-tab"
+                                aria-selected="true"
                                 ) Team Stats
                             li.nav-item
                                 a.nav-link.color-black-link.font-black#player_tab(
-                                    data-toggle="tab"
-                                    href="#player"
-                                    role="tab"
-                                    aria-controls="player-tab"
-                                    aria-selected="true"
+                                data-toggle="tab"
+                                href="#player"
+                                role="tab"
+                                aria-controls="player-tab"
+                                aria-selected="true"
                                 ) Player Stats
                             li.nav-item
                                 a.nav-link.color-black-link.font-black#box_tab(
-                                    data-toggle="tab"
-                                    href="#box"
-                                    role="tab"
-                                    aria-controls="box-tab"
-                                    aria-selected="true"
+                                data-toggle="tab"
+                                href="#box"
+                                role="tab"
+                                aria-controls="box-tab"
+                                aria-selected="true"
                                 ) Box Scores
                             li.nav-item
                                 a.nav-link.color-black-link.font-black#game_tab(
-                                    data-toggle="tab"
-                                    href="#game"
-                                    role="tab"
-                                    aria-controls="game-tab"
-                                    aria-selected="true"
+                                data-toggle="tab"
+                                href="#game"
+                                role="tab"
+                                aria-controls="game-tab"
+                                aria-selected="true"
                                 ) Game Predictions
 
 
             .container.h-75.border.hard-w-700.tab-content#myTabContent
                 .tab-pane.fade.show.active#team(
-                    role="tabpanel"
-                    aria-labelledby="upcoming_tab"
+                role="tabpanel"
+                aria-labelledby="upcoming_tab"
                 )
                     .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
                         .col-lg-12
-                            p Test
+                            section
+                                .container.h-100
+                                    .row.h-25.align-items-center.justify-content-center.text-center
+                                        .col-lg-10.align-self-end
+                                            h1.text-uppercase.font-weight-bold
+
+                                    .row.h-25.align-items-center.justify-content-center.text-center
+                                        .col-lg-12.table-responsive.small-font
+                                            table.table
+                                                thead
+                                                    tr
+                                                        th(scope="col") #
+                                                        th(scope="col") Wins
+                                                        th(scope="col") Losses
+                                                        th(scope="col") WIN_PCT
+                                                        th(scope="col") CONF_RANK
+                                                        th(scope="col") DIV_RANK
+                                                        th(scope="col") PO_WINS
+                                                        th(scope="col") PO_LOSSES
+                                                        th(scope="col") FIN_APP
+                                                        th(scope="col") FGM
+                                                        th(scope="col") FGA
+                                                        th(scope="col") FG_PCT
+                                                        th(scope="col") FG3M
+                                                        th(scope="col") FG3A
+                                                        th(scope="col") FG3_PCT
+                                                tbody
+                                                    each val in years
+                                                        tr
+                                                            th(scope="row")=val.YEAR
+                                                            td=val.WINS
+                                                            td=val.LOSSES
+                                                            td=val.WIN_PCT
+                                                            td=val.CONF_RANK
+                                                            td=val.DIV_RANK
+                                                            td=val.PO_WINS
+                                                            td=val.PO_LOSSES
+                                                            td=val.NBA_FINALS_APPEARANCE
+                                                            td=val.FGM
+                                                            td=val.FGA
+                                                            td=val.FG_PCT
+                                                            td=val.PG3M
+                                                            td=val.FGM
+                                                            td=val.FG3_PCT
                 .tab-pane.fade#player(
-                    role="tabpanel"
-                    aria-labelledby="previous_games"
+                role="tabpanel"
+                aria-labelledby="previous_games"
                 )
-                    .row
-                        .col
-                            p Nonsense 
+                    .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom
+                        .col-lg-12
+                            //Player Statistics Section
+                            section
+                                .container.h-100
+                                    .row.h-25.align-items-center.justify-content-center.text-center
+                                        .col-lg-10.align-self-end
+                                            h1.text-uppercase.font-weight-bold
+
+                                    .row.h-75.align-items-center.justify-content-center.text-center
+                                        .col-lg-10.small-font
+                                            table.table.table-responsive
+                                                thead
+                                                    tr
+                                                        th(scope='col') Name
+                                                        th(scope='col') GP
+                                                        th(scope='col') GS
+                                                        th(scope='col') MPG
+                                                        th(scope='col') PTS
+                                                        th(scope='col') OR
+                                                        th(scope='col') DR
+                                                        th(scope='col') REB
+                                                        th(scope='col') AST
+                                                        th(scope='col') STL
+                                                        th(scope='col') BLK
+                                                        th(scope='col') TO
+                                                        th(scope='col') PF
+                                                tbody
+                                                    each player in players_stats
+                                                        tr
+                                                            th(scope="row")=player.f_name + " " + player.l_name
+                                                            td=player.latest_season.GP
+                                                            td=player.latest_season.GS
+                                                            td=player.latest_season.MIN
+                                                            td=player.latest_season.PTS
+                                                            td=player.latest_season.OREB
+                                                            td=player.latest_season.DREB
+                                                            td=player.latest_season.REB
+                                                            td=player.latest_season.AST
+                                                            td=player.latest_season.STL
+                                                            td=player.latest_season.BLK
+                                                            td=player.latest_season.TOV
+                                                            td=player.latest_season.PF
                 .tab-pane.fade#box(
-                    role="tabpanel"
-                    aria-labelledby="previous_games"
+                role="tabpanel"
+                aria-labelledby="previous_games"
                 )
-                    .row
-                        .col
-                            p Nonsense
+                    .row.align-items-center.justify-content-start.text-center.tab-content.border-bottom
+                        .col-lg-12
+                            section
+                            .container.h-100
+                                .row.h-25.align-items-center.justify-content-center.text-center
+                                    .col-lg-10.align-self-end
+                                        h1.text-uppercase.font-weight-bold
+
+                                .row.h-25.align-items-center.justify-content-center.text-center
+                                    .col-lg-12.table-responsive.small-font
+                                        table.table
+                                            thead
+                                            tr
+                                                th(scope="col") GAME_ID
+                                                th(scope="col") GAME_DATE
+                                                th(scope="col") MATCHUP
+                                                th(scope="col") WL
+                                                th(scope="col") MIN
+                                                th(scope="col") PTS
+                                                th(scope="col") FGM
+                                                th(scope="col") FGA
+                                                th(scope="col") FG_PCT
+                                                th(scope="col") FG3M
+                                                th(scope="col") FG3A
+                                                th(scope="col") FG3_PCT
+                                                th(scope="col") FTM
+                                                th(scope="col") FTA
+                                                th(scope="col") FT_PCT
+                                                th(scope="col") OREB
+                                                th(scope="col") DREB
+                                                th(scope="col") REB
+                                                th(scope="col") AST
+                                                th(scope="col") STL
+                                                th(scope="col") BLK
+                                                th(scope="col") TOV
+                                                th(scope="col") PF
+                                                th(scope="col") PLUS_MINUS
+                                                th(scope="col") NUM_WINS
+                                                th(scope="col") NUM_LOSSES
+                                            tbody
+                                                    tr
+                                                        td=lastGameBoxScore.GAME_ID
+                                                        td=lastGameBoxScore.GAME_DATE
+                                                        td=lastGameBoxScore.MATCHUP
+                                                        td=lastGameBoxScore.WL
+                                                        td= lastGameBoxScore.MIN
+                                                        td= lastGameBoxScore.PTS
+                                                        td= lastGameBoxScore.FGM
+                                                        td= lastGameBoxScore.FGA
+                                                        td= lastGameBoxScore.FG_PCT
+                                                        td= lastGameBoxScore.FG3M
+                                                        td= lastGameBoxScore.FG3A
+                                                        td= lastGameBoxScore.FG3_PCT
+                                                        td= lastGameBoxScore.FTM
+                                                        td= lastGameBoxScore.FTA
+                                                        td= lastGameBoxScore.FT_PCT
+                                                        td= lastGameBoxScore.OREB
+                                                        td= lastGameBoxScore.DREB
+                                                        td= lastGameBoxScore.REB
+                                                        td= lastGameBoxScore.AST
+                                                        td= lastGameBoxScore.STL
+                                                        td= lastGameBoxScore.BLK
+                                                        td= lastGameBoxScore.TOV
+                                                        td= lastGameBoxScore.PF
+                                                        td= lastGameBoxScore.PLUS_MINUS
+                                                        td= lastGameBoxScore.NUM_WINS
+                                                        td= lastGameBoxScore.NUM_LOSSES
+
+
                 .tab-pane.fade#game(
-                    role="tabpanel"
-                    aria-labelledby="previous_games"
+                role="tabpanel"
+                aria-labelledby="previous_games"
                 )
-                    .row
-                        .col
-                            p Nonsense
+                    .row.hard-h-100.align-items-center.justify-content-start.text-center.tab-content.border-bottom#tab_content
+                        .col-lg-6(style="padding-right: 0px; padding-left: 0px")
+                            form(action="/predictions/" + predictions["route"], method="get")
+                                button.btn.btn-block.border-right
+                                    .row
+                                        .col-lg-8.border-right(style="text-align: left;")
+                                            .row
+                                                .col-lg-3
+                                                    img.rounded.float-left.team-logo-icon(
+                                                    src=predictions["imgUrl"]
+                                                    )
+                                                .col-lg-9.padding-top-12.padding-left-10.name-font
+                                                    =predictions["route"]
+                                            .row
+                                                .col-lg-3
+                                                    img.rounded.float-left.team-logo-icon(
+                                                    src=predictions["opponentImgUrl"]
+                                                    )
+                                                .col-lg-9.padding-top-12.padding-left-10.name-font
+                                                    =predictions["opponentRoute"]
+                                        .col-lg-4(style="padding-top: 1rem")
+                                            span.align-text-bottom.font-weight-bold.small-font.name-font
+                                                ="Winner: " + (predictions["winPrediction"] ? predictions["route"] : predictions["opponentRoute"])
+                    //.row.align-items-center.justify-content-start.text-center.tab-content.border-bottom
+                    //    .col-lg-12
+                    //        //- Predictions section
+                    //        section
+                    //            .container.h-75
+                    //                .row.h-75.align-items-center.justify-content-center.text-center
+                    //                    .col-lg-10.align-self-end
+                    //                        h1.text-uppercase.font-weight-bold
+                    //                            | Game Predictions
+                    //                        hr.my-4
+                    //                .row.h-25.align-items-center.justify-content-center.text-center
+                    //                    each prediction in predictions
+                    //                        .col-lg-4.align-self-end
+                    //                            .card.align-items-center(style='width: 18rem;')
+                    //                                .card-body
+                    //                                    h5.card-title=prediction.opponentFullName
+                    //                                    if prediction.winPrediction == true
+                    //                                        h6.card-subtitle.mb-2.text-muted Prediction: Win
+                    //                                    else
+                    //                                        h6.card-subtitle.mb-2.text-muted Prediction: Loss
+                    //                                    p.card-text
+                    //                                    table.table
+                    //                                        thead
+                    //                                            tr
+                    //                                                th(scope='col')
+                    //                                                th(scope='col')=team_name
+                    //                                                th(scope='col')=prediction.opponentFullName
+                    //                                        tbody
+                    //                                            tr
+                    //                                                th(scope='row') Assists
+                    //                                                td=prediction.predictedAssists
+                    //                                                td=prediction.predictedAssists - 3
+                    //                                            tr
+                    //                                                th(scope='row') Turnovers
+                    //                                                td=prediction.predictedTurnovers
+                    //                                                td=prediction.predictedAssists - 3
+                    //                        p
 
-        //- Predictions section
-        section#predictions.page-section
-            .container.h-75
-                .row.h-75.align-items-center.justify-content-center.text-center
-                    .col-lg-10.align-self-end
-                        h1.text-uppercase.font-weight-bold
-                            | Game Predictions
-                        hr.my-4
-                .row.h-25.align-items-center.justify-content-center.text-center   
-                    each prediction in predictions[0].predictions
-
-                        .col-lg-4.align-self-end
-                            .card.align-items-center(style='width: 18rem;')
-                                .card-body   
-                                    h5.card-title=prediction.opponentFullName
-                                    if prediction.winPrediction==true
-                                        h6.card-subtitle.mb-2.text-muted Prediction: Win
-                                    else
-                                        h6.card-subtitle.mb-2.text-muted Prediction: Loss
-                                    p.card-text
-                                    table.table
-                                        thead
-                                            tr
-                                                th(scope='col')
-                                                th(scope='col')=team_name
-                                                th(scope='col')=prediction.opponentFullName
-                                        tbody
-                                            tr
-                                                th(scope='row') Assists
-                                                td=prediction.predictedAssists
-                                                td=prediction.predictedAssists - 3
-                                            tr
-                                                th(scope='row') Turnovers
-                                                td=prediction.predictedTurnovers
-                                                td=prediction.predictedAssists - 3
-                                    p                         
-
-        //- Team Statistics section
-        section#team_stats.page-section
-            .container.h-100
-                .row.h-25.align-items-center.justify-content-center.text-center
-                    .col-lg-10.align-self-end
-                        h1.text-uppercase.font-weight-bold
-                            | Team Statistics
-                        hr.my-4
-                .row.h-25.align-items-center.justify-content-center.text-center
-                    .col-lg-12.table-responsive.small-font
-                        table.table
-                            thead
-                                tr
-                                    th(scope="col") #
-                                    th(scope="col") Wins
-                                    th(scope="col") Losses
-                                    th(scope="col") WIN_PCT
-                                    th(scope="col") CONF_RANK
-                                    th(scope="col") DIV_RANK
-                                    th(scope="col") PO_WINS
-                                    th(scope="col") PO_LOSSES
-                                    th(scope="col") FIN_APP
-                                    th(scope="col") FGM
-                                    th(scope="col") FGA
-                                    th(scope="col") FG_PCT
-                                    th(scope="col") FG3M
-                                    th(scope="col") FG3A
-                                    th(scope="col") FG3_PCT
-                            tbody
-                                each val in years
-                                    tr
-                                        th(scope="row")=val.YEAR
-                                        td=val.WINS
-                                        td=val.LOSSES
-                                        td=val.WIN_PCT
-                                        td=val.CONF_RANK
-                                        td=val.DIV_RANK
-                                        td=val.PO_WINS
-                                        td=val.PO_LOSSES
-                                        td=val.NBA_FINALS_APPEARANCE
-                                        td=val.FGM
-                                        td=val.FGA
-                                        td=val.FG_PCT
-                                        td=val.PG3M
-                                        td=val.FGM
-                                        td=val.FG3_PCT
-
-        
-        //- Player Statistics Section
-        section#player_stats.page-section
-            .container.h-100
-                .row.h-25.align-items-center.justify-content-center.text-center
-                    .col-lg-10.align-self-end
-                        h1.text-uppercase.font-weight-bold
-                            | Player Statistics
-                        hr.my-4
-                .row.h-75.align-items-center.justify-content-center.text-center
-                    .col-lg-10.small-font
-                        table.table.table-responsive
-                            thead
-                                tr
-                                    th(scope='col') Name
-                                    th(scope='col') GP
-                                    th(scope='col') GS
-                                    th(scope='col') MPG
-                                    th(scope='col') PTS
-                                    th(scope='col') OR
-                                    th(scope='col') DR
-                                    th(scope='col') REB
-                                    th(scope='col') AST
-                                    th(scope='col') STL
-                                    th(scope='col') BLK
-                                    th(scope='col') TO
-                                    th(scope='col') PF
-                            tbody
-                                each player in players_stats
-                                    if player.seasons[player.seasons.length - 1].TEAM_ID== team_id                        
-                                        tr
-                                            th(scope="row")=player.playerName
-                                            td=player.seasons[player.seasons.length - 1].GP
-                                            td=player.seasons[player.seasons.length - 1].GS
-                                            td=player.seasons[player.seasons.length - 1].MIN
-                                            td=player.seasons[player.seasons.length - 1].PTS
-                                            td=player.seasons[player.seasons.length - 1].OREB
-                                            td=player.seasons[player.seasons.length - 1].DREB
-                                            td=player.seasons[player.seasons.length - 1].REB
-                                            td=player.seasons[player.seasons.length - 1].AST
-                                            td=player.seasons[player.seasons.length - 1].STL
-                                            td=player.seasons[player.seasons.length - 1].BLK
-                                            td=player.seasons[player.seasons.length - 1].TOV
-                                            td=player.seasons[player.seasons.length - 1].PF                            
 
         footer
             .container.h-25
@@ -366,35 +438,35 @@ html
 
 
         script(
-            src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
-            crossorigin="anonymous"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js",
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
+        crossorigin="anonymous"
         )
         script(
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",
-            crossorigin="anonymous"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",
+        crossorigin="anonymous"
         )
         script(
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",
-            crossorigin="anonymous"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",
+        crossorigin="anonymous"
         )
         script(
-            src="../scripts/vendor/jquery/jquery.min.js"
+        src="../scripts/vendor/jquery/jquery.min.js"
         )
         script(
-            src="../scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"
+        src="../scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"
         )
         script(
-            src="../scripts/vendor/jquery-easing/jquery.easing.min.js"
+        src="../scripts/vendor/jquery-easing/jquery.easing.min.js"
         )
         script(
-            src="../scripts/vendor/magnific-popup/jquery.magnific-popup.min.js"
+        src="../scripts/vendor/magnific-popup/jquery.magnific-popup.min.js"
         )
         script(
-            src="../scripts/js/creative.js"
+        src="../scripts/js/creative.js"
         )
         script(
-            src="https://d3js.org/d3.v5.js"
+        src="https://d3js.org/d3.v5.js"
         )
