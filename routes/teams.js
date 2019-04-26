@@ -54,7 +54,7 @@ router.get("/:id", function(req, res) {
 
 
             Database.getPlayers(dbase, player_stats, function(players) {
-                curr_team_id = docs[0]._id
+                curr_team_id = docs[0]._id;
                 team = Teams.getTeamById(curr_team_id);
                 playersArr = {};
                 var i = 0;
@@ -67,30 +67,34 @@ router.get("/:id", function(req, res) {
                                 f_name: playerInfo.f_name,
                                 l_name: playerInfo.l_name,
                                 latest_season: playerInfo.seasons[playerInfo.seasons.length - 1]
-                            }
-                            playersArr[i] = data
+                            };
+                            playersArr[i] = data;
                             i += 1;
                         }
                     }
-                });
-
+            })
                 Database.getTeamPredictions(dbase, team_predictions, curr_team_id, function(predicts) {
                     // check if date is today
-                    latestPrediction = predicts[0].predictions[predicts[0].predictions.length - 1];
+                    if (predicts != "") {
+                        latestPrediction = predicts[0].predictions[predicts[0].predictions.length - 1];
 
-                    todayPredictions = Dates.isDateNow(latestPrediction.date);
-                    if (!todayPredictions) {
-                        latestPrediction = {};
-                    } else {
-                        opponentTeam = Teams.getTeamById(latestPrediction.opponentId);
-                        team_route = Teams.getRouteName(curr_team_id);
-                        Prediction = {
-                            imgUrl: team.imgUrl,
-                            opponentImgUrl: opponentTeam.imgUrl,
-                            route: team_route,
-                            opponentRoute: Teams.getRouteName(latestPrediction.opponentId),
-                            fullName: Teams.getFullName(curr_team_id)
+                        todayPredictions = Dates.isDateNow(latestPrediction.date);
+                        if (!todayPredictions || predicts[0]._id != curr_team_id) {
+                            latestPrediction = {};
+                        } else {
+                            opponentTeam = Teams.getTeamById(latestPrediction.opponentId);
+                            team_route = Teams.getRouteName(curr_team_id);
+                            Prediction = {
+                                imgUrl: team.imgUrl,
+                                opponentImgUrl: opponentTeam.imgUrl,
+                                route: team_route,
+                                opponentRoute: Teams.getRouteName(latestPrediction.opponentId),
+                                fullName: Teams.getFullName(curr_team_id)
+                            };
+                            latestPrediction = Prediction;
                         }
+                    } else {
+                        latestPrediction = {};
                     }
 
 
@@ -101,7 +105,7 @@ router.get("/:id", function(req, res) {
                         console.log(latestPrediction);
                         res.render('teams/index',
                         {
-                            predictions: Prediction,
+                            predictions: latestPrediction,
                             team_id: docs[0]._id,
                             team_city: docs[0].teamCity,
                             team_name: docs[0].teamName,
@@ -113,7 +117,7 @@ router.get("/:id", function(req, res) {
                         });
                     });
                 });
-        });
+        });;
       });
     });  
 });
@@ -133,4 +137,4 @@ router.get("/", function(req, res) {
 
 client.close();
 
-module.exports = router
+module.exports = router;
