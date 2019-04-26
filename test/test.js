@@ -39,15 +39,15 @@ describe('tests', function(){
       });
     });
   });
-  // it('getPlayers', function(done){
-  //   client.connect(function(err, db) {
-  //     const dbase = client.db(dbName);
-  //     Database.getPlayers(dbase, player_stats, function(players) {
-  //       assert.equal(players[0].f_name + '_' + players[0].l_name, players[0].playerName);
-  //       done();
-  //     });
-  //   });
-  // }); //uncomment this part out
+  it('getPlayers', function(done){
+    client.connect(function(err, db) {
+      const dbase = client.db(dbName);
+      Database.getPlayers(dbase, player_stats, function(players) {
+        assert.equal(players[0].f_name + '_' + players[0].l_name, players[0].playerName);
+        done();
+      });
+    });
+  }); //uncomment this part out
   it('getTeamPredictions', function(done){
     client.connect(function(err, db) {
 
@@ -112,10 +112,25 @@ describe('tests', function(){
   });
 
   //date parsing functionality
-  // const Dates = require('../common/date');
-  // it('isTodayToday', function(done) {
-    
-  // });
+  const Dates = require('../common/date');
+  it('isLastMonthPast', function(done) {
+    const dateStr = "2019-03-29";
+    assert.equal(Dates.isDateNowOrLater(dateStr) == false, true);
+    done();
+  });
+  it('isLastYearPast', function(done) {
+    const dateStr = "2018-03-29";
+    assert.equal(Dates.isDateNowOrLater(dateStr) == false, true);
+    done();
+  });
+
+  //This test will fail on march 29th 2025
+  it('isFutureTheFuture', function(done) {
+    const dateStr = "2025-03-29";
+    assert.equal(Dates.isDateNowOrLater(dateStr), true);
+    done();
+  });
+
 
   // it('getBoxScores', function(){
   //   client.connect(function(err, db) {
