@@ -10,7 +10,7 @@ const assert = require('assert');
 const dates = require('../common/date');
 const teams = require('../common/teams');
 const betting = require('../common/betting');
-
+const video = require('../common/video');
 
 // connection URL
 const uri = "mongodb+srv://rohanrao35:Npsnps407407@cluster0-8eolw.mongodb.net/test?retryWrites=true";
@@ -81,9 +81,8 @@ router.get("/", function(req, res) {
             game["val1"] = (odd["val1"] >= 0) ? "+"+odd["val1"] : odd["val1"];
             game["val2"] = (odd["val2"] >= 0) ? "+"+odd["val2"] : odd["val2"];
             bettingGames.push(game);
-
           });
-          res.render('index', { predictions: predictions, odds: bettingGames});
+          res.render('index', { predictions: predictions, odds: bettingGames, videoUrl: video.getVideo()});
         });        
       });
     });
