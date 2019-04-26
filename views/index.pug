@@ -100,7 +100,7 @@ html
         .row
           .col-lg-6
             h6.text-uppercase.font-white.my-4.mx-4(style="margin-bottom: 2rem !important")
-              | gameses
+              | Games
         .row
           .col-lg-12.padding-left-0.padding-right-0
             ul.nav.nav-tabs.nav-justified.font-white#gameTab(role="tabllist")            
@@ -113,13 +113,13 @@ html
                   aria-selected="true"
                 ) Upcoming game predictions            
               li.nav-item.font-white
-                a.nav-link.color-white-link#previous_games(
+                a.nav-link.color-white-link#betting_odds(
                   data-toggle="tab"
-                  href="#previous"
+                  href="#betting"
                   role="tab"
-                  aria-controls="previous-tab"
+                  aria-controls="betting-tab"
                   aria-selected="true"
-                ) Previous games              
+                ) Betting Odds              
                                   
       .container.h-75.border.hard-w-600.tab-content#myTabContent
         .tab-pane.fade.show.active#upcoming(
@@ -178,14 +178,34 @@ html
                             ="Winner: "+(prediction["winPrediction"] ? prediction["route"] : prediction["opponentRoute"])  
             - i = i + 2;
 
-        .tab-pane.fade#previous(
+        .tab-pane.fade#betting(
           role="tabpanel"
-          aria-labelledby="previous_games"
+          aria-labelledby="betting_odds"
         )
-          .row
-            .col
-              p Nonsense  
-
+          each odd in odds
+            .row(style="padding: 1rem")
+              .col-lg-4(style="padding-right: 0px; padding-left: 0px")
+                .row
+                  .col-lg-8.border-right(style="text-align: left;")
+                    .row
+                      .col-lg-3
+                        img.rounded.float-left.team-logo-icon(
+                          src=odd["team1ImgUrl"]
+                        )
+                      .col-lg-9.padding-top-12.padding-left-10.name-font
+                          =odd["team1Route"]
+                    .row
+                      .col-lg-3
+                        img.rounded.float-left.team-logo-icon(
+                            src=odd["team2ImgUrl"]                      
+                        )
+                      .col-lg-9.padding-top-12.padding-left-10.name-font
+                        =odd["team2Route"]
+              .col-lg-6(style="padding-right: 0px; padding-left: 0px")
+                .padding-top-12.padding-left-10.name-font(style="padding-top: 13px; padding-bottom: 4px")
+                    =odd["val1"]
+                .padding-top-12.padding-left-10.name-font(style="padding-top: 13px; padding-bottom: 4px")
+                    =odd["val2"]
 
     //Teams section
     section#teams.page-section

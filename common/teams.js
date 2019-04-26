@@ -595,9 +595,19 @@ function getFullName(id) {
   return team["fullName"];
 }
 
+function getIdFromFullName(fullName) {
+  for(let id in teams) {
+    const team = teams[id];
+    if(team["fullName"] == fullName) {
+      return id;
+    }
+  }
+  throw "could not find id of team from fullname";
+}
+
 function getAbreviation(id) {
   const team = getTeamById(id);
   return team["abreviation"];
 }
 
-module.exports = {getTeamId, getTeamById, getMainColor, getSecondaryColor, getImage, getRouteName, getFullName, getAbreviation};
+module.exports = {getTeamId, getTeamById, getMainColor, getSecondaryColor, getImage, getRouteName, getFullName, getAbreviation, getIdFromFullName};
